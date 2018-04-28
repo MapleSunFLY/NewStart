@@ -1,0 +1,16 @@
+//android 5个进程等级
+/**
+ * Foreground Process 前台进程
+ * 1. 正处于Activity Resume（）状态
+ * 2. 与bound服务交互状态
+ * 3. 服务前台运行状态（startForeground（）被调用）将service服务前台启动，系统不会资源不够时不会自动清理，如微信，QQ。
+
+
+ * Visible Process
+ * 弹出输入法的界面，或是未被完全覆盖的activity，及处于该状态进程
+
+ * Service Process
+
+
+ * Background Process
+ * 后台运行的进程

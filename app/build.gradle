@@ -1,0 +1,80 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        applicationId "com.fly.newstart"
+        minSdkVersion 19
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+//greenDao配置
+apply plugin: 'org.greenrobot.greendao'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+/**
+ * schemaVersion--> 指定数据库schema版本号，迁移等操作会用到;
+ * daoPackage --> dao的包名，包名默认是entity所在的包；
+ * targetGenDir --> 生成数据库文件的目录;
+ */
+greendao {
+    schemaVersion 1
+    daoPackage 'com.fly.newstart.greendao.gen'
+    targetGenDir 'src/main/java'
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile files('libs/txk5.jar')
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    //控件大全
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.google.code.gson:gson:2.7'
+    //greenDao是一个将对象映射到SQLite数据库中的轻量且快速的ORM解决方案.
+    compile 'org.greenrobot:greendao:3.0.1'
+    compile 'org.greenrobot:greendao-generator:3.0.0'
+    //okhttp
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    compile 'com.squareup.okio:okio:1.6.0'
+    //RxJava
+    compile 'io.reactivex:rxjava:1.0.14'
+    compile 'io.reactivex:rxandroid:1.0.1'
+    //okGo okhhttp 进一步封装
+    compile 'com.lzy.net:okgo:3.0.4'
+    //可以单独使用，不需要依赖下方的扩展包
+    compile 'com.lzy.net:okrx:0.1.0'
+    //RxJava扩展支持，根据需要添加
+    compile 'com.lzy.net:okserver:1.1.0'
+    //下载管理和上传管理扩展，根据需要添加
+    //或者
+    //compile 'com.lzy.net:okgo:+'        //版本号使用 + 可以自动引用最新版
+    //compile 'com.lzy.net:okrx:+'        //版本号使用 + 可以自动引用最新版
+    //compile 'com.lzy.net:okserver:+'    //版本号使用 + 可以自动引用最新版
+    testCompile 'junit:junit:4.12'
+    compile project(':myview')
+
+    //pdf
+    compile 'com.github.barteksc:android-pdf-viewer:2.7.0-beta.1'
+    compile 'com.joanzapata.pdfview:android-pdfview:1.0.4@aar'//PDF
+    compile 'me.dm7.barcodescanner:zxing:1.9.8'
+    implementation 'cn.bingoogolapple:bga-qrcode-zxing:1.2.1'
+
+}
