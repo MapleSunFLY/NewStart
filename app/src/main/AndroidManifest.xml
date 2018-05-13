@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <!-- 定位 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <!-- 拍照权限 -->
@@ -49,8 +49,12 @@
         <activity android:name=".announcement.AnnouncementActivity" />
         <activity android:name=".pdf.PDFViewActivity" />
         <activity android:name=".pdf.PDFViewActivity1" />
-        <activity android:name=".signature.LinePathViewActivity"/>
-        <activity android:name=".scanrode.ScanRodeActivity"/>
+        <activity android:name=".signature.LinePathViewActivity" />
+        <activity android:name=".scanrode.ScanRodeActivity" />
+        <activity
+            android:name=".circlemenu.CircleMenuActivity"
+            android:label="@string/title_activity_circle_menu"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

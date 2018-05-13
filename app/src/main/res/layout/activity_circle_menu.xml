@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    tools:context="com.fly.newstart.circlemenu.CircleMenuActivity">
+
+    <RadioButton
+        android:id="@+id/rb1"
+        android:button="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/bg_circular_ring_gray_red"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="生产\n入库"
+        android:textColor="@color/color_white" />
+
+    <RadioButton
+        android:id="@+id/rb2"
+        android:button="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/bg_circular_ring_gray"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="生产\n入库"
+        android:textColor="@color/color_common_red" />
+
+    <RadioButton
+        android:id="@+id/rb3"
+        android:button="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/bg_circular_ring_gray"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="生产\n入库"
+        android:textColor="@color/color_common_red" />
+
+    <RadioButton
+        android:id="@+id/rb4"
+        android:button="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/bg_circular_ring_gray"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="生产\n入库"
+        android:textColor="@color/color_common_red" />
+
+    <RadioButton
+        android:id="@+id/rb5"
+        android:button="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/bg_circular_ring_gray"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="生产\n入库"
+        android:textColor="@color/color_common_red" />
+
+    <RadioButton
+        android:id="@+id/rb6"
+        android:button="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/bg_circular_ring_gray"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="生产\n入库"
+        android:textColor="@color/color_common_red" />
+
+    <ImageView
+        android:id="@+id/imgMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/bg_circular_ring_gray_red"
+        android:src="@drawable/ic_clear_black_24dp"/>
+</RadioGroup>

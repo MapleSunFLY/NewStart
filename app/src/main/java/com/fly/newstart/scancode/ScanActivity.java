@@ -7,7 +7,11 @@ import android.os.Vibrator;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.fly.newstart.R;
 import com.fly.newstart.common.base.BaseActivity;
+
+import cn.bingoogolapple.qrcode.core.QRCodeView;
+import cn.bingoogolapple.qrcode.zxing.ZXingView;
 
 
 /**
@@ -22,7 +26,6 @@ import com.fly.newstart.common.base.BaseActivity;
  */
 public class ScanActivity extends BaseActivity implements QRCodeView.Delegate {
 
-    private TextView mToolCenterTv;
     private QRCodeView mQRCodeView;
 
     @Override
@@ -30,18 +33,11 @@ public class ScanActivity extends BaseActivity implements QRCodeView.Delegate {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
         initView();
-        activityBack();
 
-        getRxPermission().request(Manifest.permission.CAMERA)
-                .subscribe(b -> {
-                    if (!b) {
-                    }
-                });
+
     }
 
     private void initView() {
-        mToolCenterTv = (TextView) findViewById(R.id.tv_tool_center);
-        mToolCenterTv.setText("扫码");
         mQRCodeView = (ZXingView) findViewById(R.id.zxingview);
         mQRCodeView.setDelegate(this);
     }
@@ -68,15 +64,10 @@ public class ScanActivity extends BaseActivity implements QRCodeView.Delegate {
         super.onDestroy();
     }
 
-    private void vibrate() {
-        Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-        vibrator.vibrate(200);
-    }
 
     @Override
     public void onScanQRCodeSuccess(String result) {
         Log.e(TAG, "onScanQRCodeSuccess: result:" + result );
-        vibrate();
         mQRCodeView.stopSpot();
         mQRCodeView.stopCamera();
     }
@@ -84,7 +75,6 @@ public class ScanActivity extends BaseActivity implements QRCodeView.Delegate {
 
     @Override
     public void onScanQRCodeOpenCameraError() {
-        NToast.shortToast(this, "打开相机出错");
-        NLog.e(this.getClass().getSimpleName(), "打开相机出错");
+        Log.e(this.getClass().getSimpleName(), "打开相机出错");
     }
 }

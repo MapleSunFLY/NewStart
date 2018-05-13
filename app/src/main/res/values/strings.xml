@@ -22,4 +22,5 @@
         <item>全屏播放</item>
         <item>文件选择器</item>
     </string-array>
+    <string name="title_activity_circle_menu">CircleMenuActivity</string>
 </resources>

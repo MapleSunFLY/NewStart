@@ -74,7 +74,7 @@ dependencies {
     //pdf
     compile 'com.github.barteksc:android-pdf-viewer:2.7.0-beta.1'
     compile 'com.joanzapata.pdfview:android-pdfview:1.0.4@aar'//PDF
-    compile 'me.dm7.barcodescanner:zxing:1.9.8'
-    implementation 'cn.bingoogolapple:bga-qrcode-zxing:1.2.1'
+
+    compile 'cn.bingoogolapple:bga-qrcode-zxing:1.2.1'
 
 }

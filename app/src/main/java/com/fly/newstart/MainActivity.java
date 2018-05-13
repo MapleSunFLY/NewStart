@@ -7,14 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.fly.newstart.circlemenu.CircleMenuActivity;
 import com.fly.newstart.common.base.BaseActivity;
 import com.fly.newstart.myokhttp.HttpActivity;
 import com.fly.newstart.myview.ProgressActivity;
 import com.fly.newstart.pdf.PDFViewActivity;
-import com.fly.newstart.pdf.PDFViewActivity1;
 import com.fly.newstart.rx.RxActivity;
 import com.fly.newstart.announcement.AnnouncementActivity;
-import com.fly.newstart.scanrode.ScanRodeActivity;
+import com.fly.newstart.scancode.ScanActivity;
 import com.fly.newstart.signature.LinePathViewActivity;
 import com.fly.newstart.utils.LocationUtils;
 import com.fly.newstart.webview.WebViewActivity;
@@ -61,7 +61,10 @@ public class MainActivity extends BaseActivity {
                 intent.setClass(MainActivity.this, LinePathViewActivity.class);
                 break;
             case R.id.btnScanRode:
-                intent.setClass(MainActivity.this, ScanRodeActivity.class);
+                intent.setClass(MainActivity.this, ScanActivity.class);
+                break;
+            case R.id.btnProperty:
+                intent.setClass(MainActivity.this, CircleMenuActivity.class);
                 break;
             default:
                 Log.d(TAG, "onClick: "+view.getId());
