@@ -77,4 +77,8 @@ dependencies {
 
     compile 'cn.bingoogolapple:bga-qrcode-zxing:1.2.1'
 
+    //ViewModel
+    compile "android.arch.lifecycle:extensions:1.0.0"
+    annotationProcessor "android.arch.lifecycle:compiler:1.0.0" // not needed if you are using the DefaultLifecycleObserver from common-java8 artifact.
+
 }

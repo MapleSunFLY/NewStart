@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.fly.newstart.circlemenu.CircleMenuActivity;
 import com.fly.newstart.common.base.BaseActivity;
+import com.fly.newstart.gettxt.GetTxtActivity;
 import com.fly.newstart.myokhttp.HttpActivity;
 import com.fly.newstart.myview.ProgressActivity;
 import com.fly.newstart.pdf.PDFViewActivity;
@@ -65,6 +66,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.btnProperty:
                 intent.setClass(MainActivity.this, CircleMenuActivity.class);
+                break;
+            case R.id.btnGetTxT:
+                intent.setClass(MainActivity.this, GetTxtActivity.class);
                 break;
             default:
                 Log.d(TAG, "onClick: "+view.getId());

@@ -50,7 +50,8 @@
         <activity android:name=".pdf.PDFViewActivity" />
         <activity android:name=".pdf.PDFViewActivity1" />
         <activity android:name=".signature.LinePathViewActivity" />
-        <activity android:name=".scanrode.ScanRodeActivity" />
+        <activity android:name=".scancode.ScanActivity" />
+        <activity android:name=".gettxt.GetTxtActivity" />
         <activity
             android:name=".circlemenu.CircleMenuActivity"
             android:label="@string/title_activity_circle_menu"
