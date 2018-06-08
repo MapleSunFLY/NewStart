@@ -156,7 +156,7 @@ public class BaseApplication extends Application {
      *
      * @return
      */
-    public static BaseApplication getInstance() {
+    public static BaseApplication getAppContext() {
         return instance;
     }
 }

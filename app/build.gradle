@@ -10,8 +10,20 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        resValue("bool", "isSiner", "true")
+        resValue("bool", "isDebug", "true")
+        resValue("string", "text_network_error", "网络不给力，请稍后重试")
+        resValue("integer", "time_connect_out", "60000")
+        resValue("integer", "time_read_out", "60000")
+        resValue("string", "defualt_http_url", "")
     }
     buildTypes {
+        debug {
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

@@ -131,7 +131,7 @@ public abstract class BaseViewModel extends ViewModel {
     }
 
     public RestErrorInfo getError(int r) {
-        return new RestErrorInfo(BaseApplication.getInstance().getString(r));
+        return new RestErrorInfo(BaseApplication.getAppContext().getString(r));
     }
 
     public RestErrorInfo getErrorString(String r) {
@@ -144,7 +144,7 @@ public abstract class BaseViewModel extends ViewModel {
     }
 
     public static String getString(Integer s) {
-        return BaseApplication.getInstance().getString(s);
+        return BaseApplication.getAppContext().getString(s);
     }
 
 
