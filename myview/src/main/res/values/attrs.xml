@@ -9,4 +9,38 @@
         <attr name="textSize" format="dimension" />
         <attr name="isNeedAnim" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="ArcProgress">
+        <attr name="arcFinishedColor" format="color" />
+        <attr name="arcUnfinishedColor" format="color" />
+        <attr name="arcProgressMax" format="integer" />
+        <attr name="arcProgress" format="integer" />
+        <attr name="arcFullDegree" format="integer" />
+        <attr name="arcWidth" format="integer" />
+        <attr name="animaTime" format="integer" />
+        <attr name="draggingEnabled" format="boolean" />
+        <attr name="describeText" format="string" />
+        <attr name="describeTextColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="ArcMatrixProgress">
+        <attr name="arcMatrixFinishedColor" format="color" />
+        <attr name="arcMatrixUnfinishedColor" format="color" />
+        <attr name="arcMatrixOwnDegree" format="integer" />
+        <attr name="arcMatrixWitch" format="integer" />
+        <attr name="arcMatrixProgressMax" format="integer" />
+        <attr name="arcMatrixProgress" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="UpdataAPPProgressBar">
+        <attr name="updataAPPReachedBarColor" format="color" />
+        <attr name="updataAPPUnreachedBarColor" format="color" />
+        <attr name="updataAPPTextColor" format="color" />
+        <attr name="updataAPPBarHeight" format="dimension"/>
+        <attr name="updataAPPMax" format="integer" />
+        <attr name="updataAPPProgress" format="integer" />
+        <attr name="updataAPPSuffix" format="string" />
+        <attr name="updataAPPPrefix" format="string" />
+        <attr name="updataAPPTextVisibility" format="boolean"/>
+    </declare-styleable>
 </resources>

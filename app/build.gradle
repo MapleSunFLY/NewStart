@@ -55,9 +55,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile files('libs/txk5.jar')
-    compile 'com.android.support:appcompat-v7:25.3.1'
+
     //控件大全
-    compile 'com.android.support:design:25.3.1'
+    compile "com.android.support:design:${SUPPORT_VERSION}"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.google.code.gson:gson:2.7'
     //greenDao是一个将对象映射到SQLite数据库中的轻量且快速的ORM解决方案.
@@ -82,15 +82,13 @@ dependencies {
     //compile 'com.lzy.net:okserver:+'    //版本号使用 + 可以自动引用最新版
     testCompile 'junit:junit:4.12'
     compile project(':myview')
-
     //pdf
     compile 'com.github.barteksc:android-pdf-viewer:2.7.0-beta.1'
-    compile 'com.joanzapata.pdfview:android-pdfview:1.0.4@aar'//PDF
-
+    compile 'com.joanzapata.pdfview:android-pdfview:1.0.4@aar'
+    //PDF
     compile 'cn.bingoogolapple:bga-qrcode-zxing:1.2.1'
-
     //ViewModel
-    compile "android.arch.lifecycle:extensions:1.0.0"
-    annotationProcessor "android.arch.lifecycle:compiler:1.0.0" // not needed if you are using the DefaultLifecycleObserver from common-java8 artifact.
-
+    compile 'android.arch.lifecycle:extensions:1.0.0'
+    annotationProcessor "android.arch.lifecycle:compiler:1.0.0"
+    // not needed if you are using the DefaultLifecycleObserver from common-java8 artifact.
 }

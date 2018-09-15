@@ -55,7 +55,9 @@
         <activity
             android:name=".circlemenu.CircleMenuActivity"
             android:label="@string/title_activity_circle_menu"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".recyclerview.RecyclerActivity" />
+        <activity android:name=".broadcast.BroadcastActivity"></activity>
     </application>
 
 </manifest>

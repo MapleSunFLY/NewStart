@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.fly.newstart.broadcast.BroadcastActivity;
 import com.fly.newstart.circlemenu.CircleMenuActivity;
 import com.fly.newstart.common.base.BaseActivity;
 import com.fly.newstart.gettxt.GetTxtActivity;
@@ -69,6 +70,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.btnGetTxT:
                 intent.setClass(MainActivity.this, GetTxtActivity.class);
+                break;
+            case R.id.btnBroadcast:
+                intent.setClass(MainActivity.this, BroadcastActivity.class);
                 break;
             default:
                 Log.d(TAG, "onClick: "+view.getId());

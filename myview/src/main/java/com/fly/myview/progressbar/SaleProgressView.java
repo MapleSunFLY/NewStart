@@ -106,7 +106,7 @@ public class SaleProgressView extends View{
 
 
     private void initPaint() {
-        sidePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        sidePaint = new Paint(Paint.ANTI_ALIAS_FLAG);  //消除锯齿
 
        /**
         *  Paint.Style.FILL：填充内部
@@ -135,8 +135,8 @@ public class SaleProgressView extends View{
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         //获取View的宽高
-        width = getMeasuredWidth();
-        height = getMeasuredHeight();
+        width = getWidth();
+        height = getHeight();
 
         //圆角半径
         radius = height / 2.0f;

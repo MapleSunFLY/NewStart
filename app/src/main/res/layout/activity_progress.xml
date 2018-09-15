@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
 
     <com.fly.myview.progressbar.SaleProgressView
         android:id="@+id/spv"
@@ -11,8 +11,7 @@
         android:layout_height="30dp"
         android:layout_centerInParent="true"
         app:nearOverText="@string/nearOverText"
-        app:overText="@string/overText"
-        />
+        app:overText="@string/overText" />
 
     <SeekBar
         android:id="@+id/seek"
@@ -20,5 +19,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:max="100" />
+
+    <com.fly.myview.progressbar.ArcProgress
+        android:id="@+id/arcProgress"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_10"
+        app:arcProgress="0"
+        app:draggingEnabled="true" />
+
+    <com.fly.myview.progressbar.UpdataAPPProgressBar
+        android:id="@+id/updata"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        app:updataAPPBarHeight="20dp"
+        android:padding="@dimen/dp_10"
+        app:updataAPPMax="100"
+        app:updataAPPProgress="0"
+        app:updataAPPReachedBarColor="#FF6770"
+        app:updataAPPUnreachedBarColor="#EBEBEB"
+        app:updataAPPTextColor="@color/color_white" />
 
 </LinearLayout>
