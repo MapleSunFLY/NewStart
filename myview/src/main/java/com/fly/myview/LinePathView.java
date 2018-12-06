@@ -19,12 +19,24 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 /**
- * 版    权 ：博智信息
- * 项目名称 : heroicalliance
+ * <pre>
+ *           .----.
+ *        _.'__    `.
+ *    .--(Q)(OK)---/$\
+ *  .' @          /$$$\
+ *  :         ,   $$$$$
+ *   `-..__.-' _.-\$$$/
+ *         `;_:    `"'
+ *       .'"""""`.
+ *      /,  FLY  ,\
+ *     //         \\
+ *     `-._______.-'
+ *     ___`. | .'___
+ *    (______|______)
+ * </pre>
  * 包    名 : com.fly.myview
  * 作    者 : FLY
  * 创建时间 : 2018/3/2
- * <p>
  * 描述: 手写签名
  */
 
@@ -71,10 +83,11 @@ public class LinePathView extends View {
     /**
      * 背景色（指最终签名结果文件的背景颜色，默认为透明色）
      */
-    private int mBackColor=Color.TRANSPARENT;
+    private int mBackColor = Color.TRANSPARENT;
 
     //签名开始与结束
     private Touch touch;
+
     public LinePathView(Context context) {
         super(context);
         init(context);
@@ -109,19 +122,19 @@ public class LinePathView extends View {
         cachebBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
         cacheCanvas = new Canvas(cachebBitmap);
         cacheCanvas.drawColor(mBackColor);
-        isTouched=false;
+        isTouched = false;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (touch!=null) touch.OnTouch(true);
+        if (touch != null) touch.OnTouch(true);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 touchDown(event);
                 break;
             case MotionEvent.ACTION_MOVE:
                 isTouched = true;
-                if (touch!=null) touch.OnTouch(false);
+                if (touch != null) touch.OnTouch(false);
                 touchMove(event);
                 break;
             case MotionEvent.ACTION_UP:
@@ -176,6 +189,7 @@ public class LinePathView extends View {
             mY = y;
         }
     }
+
     /**
      * 清除画板
      */
@@ -190,7 +204,7 @@ public class LinePathView extends View {
         }
     }
 
-    public interface Touch{
+    public interface Touch {
         void OnTouch(boolean isTouch);
     }
 
@@ -204,21 +218,23 @@ public class LinePathView extends View {
 
     /**
      * 保存画板
+     *
      * @param path 保存到路径
      */
-    public void save(String path)  throws IOException {
+    public void save(String path) throws IOException {
         save(path, false, 0);
     }
 
     /**
      * 保存画板
+     *
      * @param path       保存到路径
      * @param clearBlank 是否清除边缘空白区域
-     * @param blank  要保留的边缘空白距离
+     * @param blank      要保留的边缘空白距离
      */
     public void save(String path, boolean clearBlank, int blank) throws IOException {
 
-        Bitmap bitmap=cachebBitmap;
+        Bitmap bitmap = cachebBitmap;
         //BitmapUtil.createScaledBitmapByHeight(srcBitmap, 300);//  压缩图片
         if (clearBlank) {
             bitmap = clearBlank(bitmap, blank);
@@ -239,16 +255,17 @@ public class LinePathView extends View {
 
     /**
      * 获取画板的bitmap
+     *
      * @return
      */
-    public Bitmap getBitMap()
-    {
+    public Bitmap getBitMap() {
         setDrawingCacheEnabled(true);
         buildDrawingCache();
-        Bitmap bitmap=getDrawingCache();
+        Bitmap bitmap = getDrawingCache();
         setDrawingCacheEnabled(false);
         return bitmap;
     }
+
     /**
      * 逐行扫描 清楚边界空白。
      *
@@ -347,9 +364,8 @@ public class LinePathView extends View {
     }
 
 
-    public void setBackColor(@ColorInt int backColor)
-    {
-        mBackColor=backColor;
+    public void setBackColor(@ColorInt int backColor) {
+        mBackColor = backColor;
     }
 
 

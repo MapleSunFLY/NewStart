@@ -20,12 +20,13 @@ import com.fly.newstart.scancode.ScanActivity;
 import com.fly.newstart.signature.LinePathViewActivity;
 import com.fly.newstart.utils.LocationUtils;
 import com.fly.newstart.webview.WebViewActivity;
+import com.shangyi.android.core.base.BaseLiveDataActivity;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseLiveDataActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView textLocation = (TextView) findViewById(R.id.tv_location);

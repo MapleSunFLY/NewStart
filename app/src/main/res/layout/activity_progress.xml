@@ -9,7 +9,9 @@
         android:id="@+id/spv"
         android:layout_width="220dp"
         android:layout_height="30dp"
+        android:layout_marginTop="@dimen/dp_10"
         android:layout_centerInParent="true"
+        android:layout_marginLeft="50dp"
         app:nearOverText="@string/nearOverText"
         app:overText="@string/overText" />
 
@@ -26,7 +28,7 @@
         android:layout_height="120dp"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/dp_10"
-        app:arcProgress="0"
+        app:arcProgress="60"
         app:draggingEnabled="true" />
 
     <com.fly.myview.progressbar.UpdataAPPProgressBar
@@ -36,7 +38,8 @@
         app:updataAPPBarHeight="20dp"
         android:padding="@dimen/dp_10"
         app:updataAPPMax="100"
-        app:updataAPPProgress="0"
+        app:updataAPPProgress="50"
+        android:visibility="invisible"
         app:updataAPPReachedBarColor="#FF6770"
         app:updataAPPUnreachedBarColor="#EBEBEB"
         app:updataAPPTextColor="@color/color_white" />

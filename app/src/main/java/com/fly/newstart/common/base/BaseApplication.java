@@ -74,7 +74,7 @@ public class BaseApplication extends Application {
 
         //init utils
         Utils.init(this);
-
+com.shangyi.android.utils.Utils.getInstance().init(this);
         //tenxun X5 init
         initTbs();
 

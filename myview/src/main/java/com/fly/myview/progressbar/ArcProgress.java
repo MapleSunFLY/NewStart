@@ -22,13 +22,25 @@ import com.fly.myview.R;
 import java.text.DecimalFormat;
 
 /**
- * 版    权 ：博智信息
- * 项目名称 : SuiJingFangDms_YiDongXiao
+ * <pre>
+ *           .----.
+ *        _.'__    `.
+ *    .--(Q)(OK)---/$\
+ *  .' @          /$$$\
+ *  :         ,   $$$$$
+ *   `-..__.-' _.-\$$/
+ *         `;_:    `"'
+ *       .'"""""`.
+ *      /,  FLY  ,\
+ *     //         \\
+ *     `-._______.-'
+ *     ___`. | .'___
+ *    (______|______)
+ * </pre>
  * 包    名 : com.fly.myview.progressbar
  * 作    者 : FLY
- * 创建时间 : 2018/8/16
- * <p>
- * 描述:
+ * 创建时间 : 2018/9/6
+ * 描述: 圆形可拖动进度条
  */
 
 public class ArcProgress extends View {

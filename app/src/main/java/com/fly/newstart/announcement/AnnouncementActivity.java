@@ -11,6 +11,8 @@ import android.widget.ViewFlipper;
 
 import com.fly.myview.cloze.announcement.UPMarqueeView;
 import com.fly.newstart.R;
+import com.shangyi.android.http.real.SimpleRetrofit;
+import com.shangyi.android.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +42,7 @@ public class AnnouncementActivity extends AppCompatActivity {
                 Toast.makeText(AnnouncementActivity.this,data.getValue(),Toast.LENGTH_SHORT).show();
             }
         });
+
 
     }
 

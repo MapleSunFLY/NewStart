@@ -34,7 +34,7 @@ import java.util.HashMap;
  * 包    名 : com.fly.myview.progressbar
  * 作    者 : FLY
  * 创建时间 : 2018/9/6
- * 描述:
+ * 描述: 更新下载的进度条
  */
 
 public class UpdataAPPProgressBar extends View {
@@ -150,12 +150,13 @@ public class UpdataAPPProgressBar extends View {
         mPaint.setColor(mReachedBarColor);
         canvas.drawRoundRect(mReachedRectF, mBarHeight / 2, mBarHeight / 2, mPaint);
 
-        if (mTextVisibility && getProgress() > 0) {
-            mPaint.setColor(mTextColor);
-            mPaint.setTextSize(mBarHeight * 0.6f);
-            String mCurrentDrawText =  new DecimalFormat("#").format(getProgress() * 100 / getMax());
-            mCurrentDrawText = mPrefix + mCurrentDrawText + mSuffix;
-            float mDrawTextWidth = mPaint.measureText(mCurrentDrawText);
+
+        mPaint.setColor(mTextColor);
+        mPaint.setTextSize(mBarHeight * 0.6f);
+        String mCurrentDrawText = new DecimalFormat("#").format(getProgress() * 100 / getMax());
+        mCurrentDrawText = mPrefix + mCurrentDrawText + mSuffix;
+        float mDrawTextWidth = mPaint.measureText(mCurrentDrawText);
+        if (mTextVisibility && getProgress() > 0 && mReachedRectF.right > mDrawTextWidth) {
             canvas.drawText(mCurrentDrawText, mReachedRectF.right - mDrawTextWidth - mBarHeight * 0.4f, (int) ((getHeight() / 2.0f) - ((mPaint.descent() + mPaint.ascent()) / 2.0f)), mPaint);
         }
 
@@ -168,9 +169,9 @@ public class UpdataAPPProgressBar extends View {
         mReachedRectF.right = (getWidth() - getPaddingLeft() - getPaddingRight()) / (getMax() * 1.0f) * getProgress() + getPaddingLeft();
         mReachedRectF.bottom = getHeight() / 2.0f + mBarHeight / 2.0f;
 
-        mUnreachedRectF.left = mReachedRectF.right;
-        mUnreachedRectF.right = getWidth() - getPaddingRight();
+        mUnreachedRectF.left = getPaddingLeft();
         mUnreachedRectF.top = getHeight() / 2.0f + -mBarHeight / 2.0f;
+        mUnreachedRectF.right = getWidth() - getPaddingRight();
         mUnreachedRectF.bottom = getHeight() / 2.0f + mBarHeight / 2.0f;
     }
 

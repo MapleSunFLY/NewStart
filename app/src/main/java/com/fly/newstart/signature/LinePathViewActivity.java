@@ -71,6 +71,7 @@ public class LinePathViewActivity extends AppCompatActivity {
         mBtnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //保存
                 if (mPathView.getTouched()) {
                     try {
                         mPathView.save("/sdcard/qm.png", true, 10);
