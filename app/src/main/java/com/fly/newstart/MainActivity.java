@@ -7,15 +7,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.fly.newstart.announcement.AnnouncementActivity;
 import com.fly.newstart.broadcast.BroadcastActivity;
 import com.fly.newstart.circlemenu.CircleMenuActivity;
-import com.fly.newstart.common.base.BaseActivity;
 import com.fly.newstart.gettxt.GetTxtActivity;
 import com.fly.newstart.myokhttp.HttpActivity;
 import com.fly.newstart.myview.ProgressActivity;
 import com.fly.newstart.pdf.PDFViewActivity;
 import com.fly.newstart.rx.RxActivity;
-import com.fly.newstart.announcement.AnnouncementActivity;
 import com.fly.newstart.scancode.ScanActivity;
 import com.fly.newstart.signature.LinePathViewActivity;
 import com.fly.newstart.utils.LocationUtils;
@@ -30,18 +29,18 @@ public class MainActivity extends BaseLiveDataActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView textLocation = (TextView) findViewById(R.id.tv_location);
-        Location location= LocationUtils.getInstance(this).showLocation();
-        if (location!=null){
+        Location location = LocationUtils.getInstance(this).showLocation();
+        if (location != null) {
             String address = "纬度：" + location.getLatitude() + "经度：" + location.getLongitude();
             textLocation.setText(address);
-        }else {
+        } else {
             textLocation.setText("未获取");
         }
     }
 
-    public void onClick(View view){
+    public void onClick(View view) {
         Intent intent = new Intent();
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_main_okhttp:
                 intent.setClass(MainActivity.this, HttpActivity.class);
                 break;
@@ -76,7 +75,7 @@ public class MainActivity extends BaseLiveDataActivity {
                 intent.setClass(MainActivity.this, BroadcastActivity.class);
                 break;
             default:
-                Log.d(TAG, "onClick: "+view.getId());
+                Log.d(TAG, "onClick: " + view.getId());
                 break;
         }
         startActivity(intent);

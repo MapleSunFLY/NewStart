@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="arc_progress_finished_color">#d64444</color>
+    <color name="arc_progress_finished_1_color">#84d64444</color>
     <color name="arc_progress_unfinished_color">#FFFFFF</color>
 
     <color name="arc_matrix_progress_finished_color">#d64444</color>

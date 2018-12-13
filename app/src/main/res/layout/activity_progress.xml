@@ -9,9 +9,9 @@
         android:id="@+id/spv"
         android:layout_width="220dp"
         android:layout_height="30dp"
-        android:layout_marginTop="@dimen/dp_10"
         android:layout_centerInParent="true"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="@dimen/dp_10"
         app:nearOverText="@string/nearOverText"
         app:overText="@string/overText" />
 
@@ -35,13 +35,28 @@
         android:id="@+id/updata"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        app:updataAPPBarHeight="20dp"
         android:padding="@dimen/dp_10"
+        app:updataAPPBarHeight="20dp"
         app:updataAPPMax="100"
         app:updataAPPProgress="50"
-        android:visibility="invisible"
         app:updataAPPReachedBarColor="#FF6770"
-        app:updataAPPUnreachedBarColor="#EBEBEB"
-        app:updataAPPTextColor="@color/color_white" />
+        app:updataAPPTextColor="@color/color_white"
+        app:updataAPPUnreachedBarColor="#EBEBEB" />
+
+    <com.fly.myview.progressbar.StageProgress
+        android:id="@+id/stageProgress"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="@dimen/dp_15"
+        app:stageMax="100"
+        app:stageProgress="100"
+        app:stageThisStage="1"
+        app:stageAllStage="4"
+        app:stageText="7日目标：150-400(min)"
+        app:stageUnreachedBarBitmap="@drawable/view_progress_lock_ic_selector"
+        app:stageReachedBarColor="#FF6770"
+        app:stageUnreachedBarColor="#F6F6F6"
+        app:stageUnreachedTextColor="#BABABA"
+        app:stageTextBackgroundColor="#28ff6770"/>
 
 </LinearLayout>

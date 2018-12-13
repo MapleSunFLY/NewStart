@@ -44,7 +44,6 @@ public class ProgressActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
-
         saleProgressView = (SaleProgressView) findViewById(R.id.spv);
         arcProgress = (ArcProgress) findViewById(R.id.arcProgress);
         updataAPPProgressBar = (UpdataAPPProgressBar) findViewById(R.id.updata);

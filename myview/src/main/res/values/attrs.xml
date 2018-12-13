@@ -36,11 +36,27 @@
         <attr name="updataAPPReachedBarColor" format="color" />
         <attr name="updataAPPUnreachedBarColor" format="color" />
         <attr name="updataAPPTextColor" format="color" />
-        <attr name="updataAPPBarHeight" format="dimension"/>
+        <attr name="updataAPPBarHeight" format="dimension" />
         <attr name="updataAPPMax" format="integer" />
         <attr name="updataAPPProgress" format="integer" />
         <attr name="updataAPPSuffix" format="string" />
         <attr name="updataAPPPrefix" format="string" />
-        <attr name="updataAPPTextVisibility" format="boolean"/>
+        <attr name="updataAPPTextVisibility" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="StageProgress">
+        <attr name="stageReachedBarColor" format="color" />
+        <attr name="stageUnreachedBarColor" format="color" />
+        <attr name="stageUnreachedTextColor" format="color" />
+        <attr name="stageBarHeight" format="dimension" />
+        <attr name="stageMax" format="integer" />
+        <attr name="stageProgress" format="integer" />
+        <attr name="stageAllStage" format="integer" />
+        <attr name="stageThisStage" format="integer" />
+        <attr name="stageText" format="string" />
+        <attr name="stageTextColor" format="color" />
+        <attr name="stageTextBackgroundColor" format="color" />
+        <attr name="stageTextVisibility" format="boolean" />
+        <attr name="stageUnreachedBarBitmap" format="reference"/>
     </declare-styleable>
 </resources>

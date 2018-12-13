@@ -3,14 +3,15 @@ package com.fly.newstart.common.base;
 import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.multidex.BuildConfig;
 import android.util.Log;
 
 import com.fly.newstart.greendao.db.utils.GreenDaoUtils;
 import com.fly.newstart.greendao.gen.DaoSession;
 import com.fly.newstart.utils.HttpUtils;
-import com.fly.newstart.utils.Utils;
+import com.shangyi.android.utils.LogUtils;
+import com.shangyi.android.utils.Utils;
 import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.TbsListener;
 
 /**
  * <pre>
@@ -72,19 +73,16 @@ public class BaseApplication extends Application {
         this.mMainThead = Thread.currentThread();
         this.mMainTheadId = android.os.Process.myTid();
 
-        //init utils
-        Utils.init(this);
-com.shangyi.android.utils.Utils.getInstance().init(this);
+        Utils.getInstance().init(this).setDebug(BuildConfig.DEBUG);
         //tenxun X5 init
         initTbs();
 
         //数据库初始化
-        sDaoSession = GreenDaoUtils.init(this,true );
+        sDaoSession = GreenDaoUtils.init(this, true);
 
         //okgo 初始化
         HttpUtils.init(this);
     }
-
 
 
     private void initTbs() {
@@ -104,14 +102,15 @@ com.shangyi.android.utils.Utils.getInstance().init(this);
             }
         };
         //x5内核初始化接口
-        QbSdk.initX5Environment(getApplicationContext(),  cb);
+        QbSdk.initX5Environment(getApplicationContext(), cb);
     }
 
     /**
      * 获取数据库的DaoSession
+     *
      * @return
      */
-    public static DaoSession getMainDaoSession(){
+    public static DaoSession getMainDaoSession() {
         return sDaoSession;
     }
 
