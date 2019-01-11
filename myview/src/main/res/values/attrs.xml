@@ -54,9 +54,22 @@
         <attr name="stageAllStage" format="integer" />
         <attr name="stageThisStage" format="integer" />
         <attr name="stageText" format="string" />
+        <attr name="stageTextSize" format="dimension" />
         <attr name="stageTextColor" format="color" />
         <attr name="stageTextBackgroundColor" format="color" />
         <attr name="stageTextVisibility" format="boolean" />
         <attr name="stageUnreachedBarBitmap" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="LineChart">
+        <attr name="lineColor" format="color" />
+        <attr name="lineNullColor" format="color" />
+        <attr name="lineIntervalColor" format="color" />
+        <attr name="lineHeight" format="dimension" />
+        <attr name="lineSpotRadius" format="dimension" />
+        <attr name="lineTextSize" format="dimension" />
+        <attr name="lineMinSpotNum" format="integer" />
+        <attr name="lineTextColor" format="color" />
+        <attr name="lineTextVisibility" format="boolean" />
     </declare-styleable>
 </resources>

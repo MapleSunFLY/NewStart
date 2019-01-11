@@ -6,4 +6,7 @@
 
     <color name="arc_matrix_progress_finished_color">#d64444</color>
     <color name="arc_matrix_progress_unfinished_color">#FFFFFF</color>
+
+    <color name="line_chart_color">#FFAA29</color>
+    <color name="line_chart_null_color">#50FFAA29</color>
 </resources>

@@ -56,7 +56,7 @@ public class StageProgress extends View {
     /**
      * 当前阶段
      */
-    private int mThisStage = 1;
+    private int mThisStage = 0;
 
     /**
      * 总阶段
@@ -67,12 +67,12 @@ public class StageProgress extends View {
     /**
      * 默认已完成颜色
      */
-    private final int DEFAULT_FINISHED_COLOR = getResources().getColor(R.color.arc_progress_finished_color);
+    private final int DEFAULT_FINISHED_COLOR = getResources().getColor(R.color.arc_matrix_progress_finished_color);
 
     /**
      * 默认未完成颜色
      */
-    private final int DEFAULT_UNFINISHED_COLOR = getResources().getColor(R.color.arc_progress_unfinished_color);
+    private final int DEFAULT_UNFINISHED_COLOR = getResources().getColor(R.color.arc_matrix_progress_unfinished_color);
 
     /**
      * 已完成进度颜色
@@ -119,11 +119,6 @@ public class StageProgress extends View {
     private boolean mTextVisibility;
 
     /**
-     * 提示文本颜色
-     */
-    private int mTextColor;
-
-    /**
      * 提示文本
      */
     private String mText;
@@ -131,8 +126,17 @@ public class StageProgress extends View {
     /**
      * 提示文本颜色
      */
-    private int mTextBackgroundColor;
+    private int mTextColor;
 
+    /**
+     * 提示文本颜色
+     */
+    private float mTextSize;
+
+    /**
+     * 提示文本颜色
+     */
+    private int mTextBackgroundColor;
 
     public StageProgress(Context context) {
         this(context, null);
@@ -158,15 +162,16 @@ public class StageProgress extends View {
         mUnreachedBarColor = typedArray.getColor(R.styleable.StageProgress_stageUnreachedBarColor, DEFAULT_UNFINISHED_COLOR);
         mUnreachedTextColor = typedArray.getColor(R.styleable.StageProgress_stageUnreachedTextColor, DEFAULT_UNFINISHED_COLOR);
         mTextColor = typedArray.getColor(R.styleable.StageProgress_stageTextColor, DEFAULT_FINISHED_COLOR);
+        mTextSize = typedArray.getDimension(R.styleable.StageProgress_stageBarHeight, ViewUtils.dip2px(getContext(), 10f));
         mTextBackgroundColor = typedArray.getColor(R.styleable.StageProgress_stageTextBackgroundColor, DEFAULT_UNFINISHED_COLOR);
-        mBarHeight = typedArray.getDimension(R.styleable.StageProgress_stageBarHeight, ViewUtils.dip2px(3f));
+        mBarHeight = typedArray.getDimension(R.styleable.StageProgress_stageBarHeight, ViewUtils.dip2px(getContext(), 3f));
         mText = typedArray.getString(R.styleable.StageProgress_stageText);
         mTextVisibility = typedArray.getBoolean(R.styleable.StageProgress_stageTextVisibility, true);
         mUnreachedBarDrawable = typedArray.getDrawable(R.styleable.StageProgress_stageUnreachedBarBitmap);
         if (mUnreachedBarDrawable != null) {
-            Bitmap bitmap = Bitmap.createBitmap(ViewUtils.dip2px(mBarHeight * 1.5f), ViewUtils.dip2px(mBarHeight * 1.5f), Bitmap.Config.ARGB_8888);
+            Bitmap bitmap = Bitmap.createBitmap(ViewUtils.dip2px(getContext(), mBarHeight * 2f), ViewUtils.dip2px(getContext(), mBarHeight * 2f), Bitmap.Config.ARGB_8888);
             Canvas cas = new Canvas(bitmap);
-            mUnreachedBarDrawable.setBounds(0, 0, ViewUtils.dip2px(mBarHeight * 1.5f), ViewUtils.dip2px(mBarHeight * 1.5f));
+            mUnreachedBarDrawable.setBounds(0, 0, ViewUtils.dip2px(getContext(), mBarHeight * 2f), ViewUtils.dip2px(getContext(), mBarHeight * 2f));
             mUnreachedBarDrawable.draw(cas);
         }
         typedArray.recycle();
@@ -192,21 +197,23 @@ public class StageProgress extends View {
         for (int i = 0; i <= mAllStage; i++) {
             mPaint.setStyle(Paint.Style.FILL);
             mPaint.setStrokeWidth(0);
-            float cx = i == 0 ? mUnreachedRectF.left : mUnreachedRectF.right / mAllStage * i;
-            if (i < mThisStage - 1 || (i == mThisStage - 1 && mProgress == mMax)) {
+            float cx = mUnreachedRectF.left + (mUnreachedRectF.right - mUnreachedRectF.left) / mAllStage * i;
+            if (i < mThisStage) {
                 mPaint.setColor(mReachedBarColor);
-                canvas.drawCircle(cx, getHeight() / 2, mBarHeight * 2.6f, mPaint);
-                mPaint.setStrokeWidth(ViewUtils.dip2px(2));
+                canvas.drawCircle(cx, getHeight() / 2, mBarHeight * 3f, mPaint);
+                mPaint.setStrokeWidth(ViewUtils.dip2px(getContext(), 2));
                 mPaint.setColor(Color.WHITE);
-                canvas.drawLine(cx - 1.2f * mBarHeight, getHeight() / 2 + mBarHeight * 0.2f, cx - mBarHeight * 0.5f, getHeight() / 2 + mBarHeight, mPaint);
+                canvas.drawLine(cx - 1.4f * mBarHeight, getHeight() / 2 + mBarHeight * 0.2f, cx - mBarHeight * 0.5f, getHeight() / 2 + mBarHeight, mPaint);
                 canvas.drawLine(cx - mBarHeight * 0.3f, getHeight() / 2 + mBarHeight, cx + 1.2f * mBarHeight, getHeight() / 2 - mBarHeight, mPaint);
                 mPaint.setColor(mReachedBarColor);
-            } else if (i == mThisStage - 1 || (i == mThisStage && mProgress == mMax)) {
+            } else if (i == mThisStage) {
                 mPaint.setColor(Color.parseColor("#40FF6770"));
-                canvas.drawCircle(cx, getHeight() / 2, mBarHeight * 2.6f, mPaint);
+                canvas.drawCircle(cx, getHeight() / 2, mBarHeight * 3.2f, mPaint);
                 mPaint.setColor(mReachedBarColor);
-                canvas.drawCircle(cx, getHeight() / 2, mBarHeight * 1.5f, mPaint);
+                canvas.drawCircle(cx, getHeight() / 2, mBarHeight * 1.8f, mPaint);
             } else {
+                mPaint.setColor(Color.WHITE);
+                canvas.drawCircle(cx, getHeight() / 2, mBarHeight, mPaint);
                 mPaint.setColor(mUnreachedTextColor);
                 if (mUnreachedBarDrawable != null) {
                     canvas.save();
@@ -214,10 +221,10 @@ public class StageProgress extends View {
                     mUnreachedBarDrawable.draw(canvas);
                     canvas.restore();
                 } else {
-                    canvas.drawCircle(cx, getHeight() / 2, mBarHeight * 2.6f, mPaint);
+                    canvas.drawCircle(cx, getHeight() / 2, mBarHeight * 3f, mPaint);
                 }
             }
-            mPaint.setTextSize(mBarHeight * 4.5f);
+            mPaint.setTextSize(mTextSize);
             String mCurrentDrawText = "S" + (i + 1);
             if (i == mAllStage) mCurrentDrawText = "复评";
             if (mStageTexts != null && i < mStageTexts.size()) {
@@ -225,12 +232,11 @@ public class StageProgress extends View {
             }
             float mDrawTextWidth = mPaint.measureText(mCurrentDrawText);
 
-            canvas.drawText(mCurrentDrawText, cx - mDrawTextWidth / 2, getHeight() / 2 - mBarHeight * 4f, mPaint);
+            canvas.drawText(mCurrentDrawText, cx - mDrawTextWidth / 2, getHeight() / 2 - mBarHeight * 5f, mPaint);
         }
 
         if (mTextVisibility && !TextUtils.isEmpty(mText)) {
-            float cx = mThisStage == 1 ? mUnreachedRectF.left : mUnreachedRectF.right / mAllStage * mThisStage;
-            float mDrawTextWidth = mPaint.measureText(mText);
+            float cx = mUnreachedRectF.left + (mUnreachedRectF.right - mUnreachedRectF.left) / mAllStage * mThisStage; float mDrawTextWidth = mPaint.measureText(mText);
             float cy = getHeight() / 2 + mBarHeight * 12;
 
             mPaint.setColor(mTextBackgroundColor);
@@ -244,31 +250,34 @@ public class StageProgress extends View {
             if (cx > mDrawTextWidth / 2) {
                 if (getWidth() - cx > mDrawTextWidth / 2) {
                     cx = cx - mDrawTextWidth / 2;
-                } else cx = cx + 1.3f * mBarHeight;
-            } else cx = cx - 1.3f * mBarHeight;
+                } else cx = cx + 3f * mBarHeight - mDrawTextWidth;
+            } else cx = cx - 3f * mBarHeight;
 
-            mPaint.setStrokeCap(Paint.Cap.BUTT);
-            mReachedRectF.left = cx - 1.5f * mBarHeight;
+
+            mPaint.setStrokeCap(Paint.Cap.SQUARE);
+            mReachedRectF.left = cx - 2f * mBarHeight;
             mReachedRectF.top = cy - mPaint.getTextSize() - mBarHeight;
-            mReachedRectF.right = cx + 1.5f * mBarHeight + mDrawTextWidth;
+            mReachedRectF.right = cx + 2f * mBarHeight + mDrawTextWidth;
             mReachedRectF.bottom = cy + mPaint.getTextSize() / 2 + 0.8f * mBarHeight;
-            canvas.drawRoundRect(mReachedRectF, cx, cy, mPaint);
+            canvas.drawRect(mReachedRectF, mPaint);
 
             mPaint.setStrokeCap(Paint.Cap.ROUND);
             mPaint.setColor(mTextColor);
+            mPaint.setTextSize(mTextSize);
             canvas.drawText(mText, cx, cy, mPaint);
         }
     }
 
     private void calculateDrawRectFWithoutProgressText() {
-        mUnreachedRectF.left = getPaddingLeft() + mBarHeight * 4f;
+        mUnreachedRectF.left = getPaddingLeft() + mBarHeight * 5f;
         mUnreachedRectF.top = getHeight() / 2.0f - mBarHeight / 2.0f;
-        mUnreachedRectF.right = getWidth() - getPaddingRight() - mBarHeight * 4f;
+        mUnreachedRectF.right = getWidth() - getPaddingRight() - mBarHeight * 5f;
         mUnreachedRectF.bottom = getHeight() / 2.0f + mBarHeight / 2.0f;
 
         mReachedRectF.left = mUnreachedRectF.left;
         mReachedRectF.top = mUnreachedRectF.top;
-        mReachedRectF.right = mUnreachedRectF.right / mAllStage * (mThisStage - 1) + (mUnreachedRectF.right) / mAllStage * mProgress / mMax;
+        if (mThisStage == mAllStage) mProgress = 0;
+        mReachedRectF.right = mUnreachedRectF.left + (mUnreachedRectF.right - mUnreachedRectF.left) / mAllStage * (mThisStage + mProgress / mMax);
         mReachedRectF.bottom = mUnreachedRectF.bottom;
     }
 
@@ -304,7 +313,18 @@ public class StageProgress extends View {
     }
 
     public void setThisStage(int mThisStage) {
-        this.mThisStage = mThisStage > mAllStage ? mAllStage : mThisStage;
+        if (mThisStage > mAllStage) {
+            this.mThisStage = mAllStage;
+        } else this.mThisStage = mThisStage;
+        invalidate();
+    }
+
+    public String getText() {
+        return mText;
+    }
+
+    public void setText(String mText) {
+        this.mText = mText;
         invalidate();
     }
 
