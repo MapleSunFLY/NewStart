@@ -72,4 +72,17 @@
         <attr name="lineTextColor" format="color" />
         <attr name="lineTextVisibility" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="StatisticsLineChart">
+        <attr name="statisticsNumUnit" format="string" />
+        <attr name="statisticsLineUnit" format="string" />
+        <attr name="statisticsLineColor" format="color" />
+        <attr name="statisticsDottedLineColor" format="color" />
+        <attr name="statisticsSolidLineColor" format="color" />
+        <attr name="statisticsMaxBackgroundColor" format="color" />
+        <attr name="statisticsMinBackgroundColor" format="color" />
+        <attr name="statisticsLineHeight" format="dimension" />
+        <attr name="statisticsLineTextSize" format="dimension" />
+        <attr name="statisticsLineTextColor" format="color" />
+    </declare-styleable>
 </resources>

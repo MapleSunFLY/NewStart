@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.widget.SeekBar;
 
 import com.fly.myview.chart.LineChartView;
+import com.fly.myview.chart.StatisticsLineChartView;
 import com.fly.myview.progressbar.ArcProgress;
 import com.fly.myview.progressbar.SaleProgressView;
 import com.fly.myview.progressbar.StageProgress;
 import com.fly.myview.progressbar.UpdataAPPProgressBar;
 import com.fly.newstart.R;
 import com.fly.newstart.common.base.BaseActivity;
+import com.shangyi.android.utils.ListUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +46,7 @@ public class ProgressActivity extends BaseActivity {
     private UpdataAPPProgressBar updataAPPProgressBar;
     private StageProgress stageProgress;
     private LineChartView lineChartView;
+    private StatisticsLineChartView statisticsLineChartView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +55,8 @@ public class ProgressActivity extends BaseActivity {
         saleProgressView = (SaleProgressView) findViewById(R.id.spv);
         arcProgress = (ArcProgress) findViewById(R.id.arcProgress);
         updataAPPProgressBar = (UpdataAPPProgressBar) findViewById(R.id.updata);
-        stageProgress =  (StageProgress) findViewById(R.id.stageProgress);
+        stageProgress = (StageProgress) findViewById(R.id.stageProgress);
+        statisticsLineChartView = (StatisticsLineChartView) findViewById(R.id.statisticsLine);
         stageProgress.setMax(200);
         stageProgress.setProgress(200);
         stageProgress.setThisStage(1);
@@ -85,5 +89,9 @@ public class ProgressActivity extends BaseActivity {
 
             }
         });
+        List<Integer> doubles = ListUtils.newArrayList(50,60,70,75,80,80,85,90,100,55,55,60,70,75,80,80,85,90,100,55,60,70,75,80,80,85,90,100,100,55,60,70,75,80,80,85,90,100);
+        List<String> strings = ListUtils.newArrayList("0","40","80","120","160","200","240");
+        statisticsLineChartView.setLines(doubles);
+        statisticsLineChartView.setNums(strings);
     }
 }

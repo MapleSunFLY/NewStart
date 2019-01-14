@@ -223,7 +223,7 @@ public class ArcProgress extends View {
         float sweep2 = arcFullDegree - sweep1;
 
         progressPaint.setColor(finishedStrokeColor);
-        progressPaint.setStyle(Paint.Style.STROKE);//空心 描边
+        progressPaint.setStyle(Paint.Style.STROKE);
         progressPaint.setStrokeWidth(STROKE_WIDTH);
         canvas.drawArc(circleRectF, startAngle, sweep1, false, progressPaint);
 
@@ -231,7 +231,7 @@ public class ArcProgress extends View {
         canvas.drawArc(circleRectF, startAngle + sweep1, sweep2, false, progressPaint);
 
 
-        progressPaint.setStyle(Paint.Style.FILL);//空心 描边
+        progressPaint.setStyle(Paint.Style.FILL);
         progressPaint.setStrokeWidth(0);
         float progressRadians = (float) (((360.0f - ARC_FULL_DEGREE) / 2 + sweep1) / 180 * Math.PI);
         float thumbX = centerX - circleRadius * (float) Math.sin(progressRadians);

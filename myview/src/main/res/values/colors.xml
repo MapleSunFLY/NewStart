@@ -9,4 +9,6 @@
 
     <color name="line_chart_color">#FFAA29</color>
     <color name="line_chart_null_color">#50FFAA29</color>
+
+    <color name="statistics_line_chart_color">#d64444</color>
 </resources>

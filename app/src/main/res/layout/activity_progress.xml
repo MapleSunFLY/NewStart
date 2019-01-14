@@ -49,6 +49,7 @@
 
     <com.fly.myview.progressbar.StageProgress
         android:id="@+id/stageProgress"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="@dimen/dp_15"
@@ -71,4 +72,14 @@
         app:lineIntervalColor="#FEF7ED"
         android:layout_marginTop="@dimen/dp_10"
         android:padding="@dimen/dp_10" />
+
+    <com.fly.myview.chart.StatisticsLineChartView
+        android:id="@+id/statisticsLine"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="@dimen/dp_8"
+        android:background="#FEF7ED"
+        android:layout_marginTop="@dimen/dp_10"
+        app:statisticsLineUnit="次/分"
+        app:statisticsNumUnit="秒"/>
 </LinearLayout>
