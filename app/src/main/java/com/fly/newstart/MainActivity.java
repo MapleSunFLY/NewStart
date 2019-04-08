@@ -14,6 +14,7 @@ import com.fly.newstart.gettxt.GetTxtActivity;
 import com.fly.newstart.myokhttp.HttpActivity;
 import com.fly.newstart.myview.ProgressActivity;
 import com.fly.newstart.pdf.PDFViewActivity;
+import com.fly.newstart.permission.PermissionsActivity;
 import com.fly.newstart.rx.RxActivity;
 import com.fly.newstart.scancode.ScanActivity;
 import com.fly.newstart.signature.LinePathViewActivity;
@@ -73,6 +74,9 @@ public class MainActivity extends BaseLiveDataActivity {
                 break;
             case R.id.btnBroadcast:
                 intent.setClass(MainActivity.this, BroadcastActivity.class);
+                break;
+            case R.id.btnPermissions:
+                intent.setClass(MainActivity.this, PermissionsActivity.class);
                 break;
             default:
                 Log.d(TAG, "onClick: " + view.getId());

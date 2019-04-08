@@ -79,7 +79,12 @@
         android:layout_height="100dp"
         android:padding="@dimen/dp_8"
         android:background="#FEF7ED"
+        android:visibility="gone"
         android:layout_marginTop="@dimen/dp_10"
         app:statisticsLineUnit="次/分"
         app:statisticsNumUnit="秒"/>
+    <com.fly.myview.radar.RadarView
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:layout_margin="@dimen/dp_10"/>
 </LinearLayout>
