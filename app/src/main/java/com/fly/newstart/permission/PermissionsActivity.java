@@ -36,7 +36,7 @@ public class PermissionsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_permissions);
 
         initView();
         initEvent();
@@ -77,8 +77,7 @@ public class PermissionsActivity extends AppCompatActivity {
     //请求权限
     private boolean requestPermissions() {
         //需要请求的权限
-        String[] permissions = {Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION};
+        String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
         //开始请求权限
         return requestPermissions.requestPermissions(
                 this,
@@ -101,8 +100,10 @@ public class PermissionsActivity extends AppCompatActivity {
             @Override
             public void onClick(boolean isPositive) {
                 if (isPositive) {
+                    Toast.makeText(PermissionsActivity.this, "前往权限管理", Toast.LENGTH_LONG).show();
+                } else {
                     Toast.makeText(PermissionsActivity.this, "取消了，打开权限", Toast.LENGTH_LONG).show();
-                } else Toast.makeText(PermissionsActivity.this, "前往权限管理", Toast.LENGTH_LONG).show();
+                }
             }
         })) {
             //请求的权限全部授权成功，此处可以做自己想做的事了

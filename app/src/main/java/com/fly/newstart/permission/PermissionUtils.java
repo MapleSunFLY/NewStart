@@ -23,7 +23,7 @@ import java.util.List;
  * 包    名 : com.fly.newstart.permission
  * 作    者 : FLY
  * 创建时间 : 2019/4/8
- * 描述:
+ * 描述: 权限帮助
  */
 public class PermissionUtils {
     public static int ResultCode1 = 100;//权限请求码
