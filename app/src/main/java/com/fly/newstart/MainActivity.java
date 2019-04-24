@@ -13,6 +13,7 @@ import com.fly.newstart.circlemenu.CircleMenuActivity;
 import com.fly.newstart.gettxt.GetTxtActivity;
 import com.fly.newstart.myokhttp.HttpActivity;
 import com.fly.newstart.myview.ProgressActivity;
+import com.fly.newstart.neinterface.text.AActivity;
 import com.fly.newstart.pdf.PDFViewActivity;
 import com.fly.newstart.permission.PermissionsActivity;
 import com.fly.newstart.rx.RxActivity;
@@ -77,6 +78,9 @@ public class MainActivity extends BaseLiveDataActivity {
                 break;
             case R.id.btnPermissions:
                 intent.setClass(MainActivity.this, PermissionsActivity.class);
+                break;
+            case R.id.btnNeinterface:
+                intent.setClass(MainActivity.this, AActivity.class);
                 break;
             default:
                 Log.d(TAG, "onClick: " + view.getId());

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.fly.newstart.neinterface.text.AActivity">
+
+    <TextView
+        android:id="@+id/tvShow"
+        style="@style/WrapWrap"
+        android:textSize="@dimen/dp_16" />
+
+    <Button
+        android:id="@+id/btnStartB"
+        style="@style/WrapWrap"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="启动B组件"/>
+
+</LinearLayout>

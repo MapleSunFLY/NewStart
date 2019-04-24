@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchMatch"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.fly.newstart.neinterface.text.BActivity">
+
+    <Button
+        android:id="@+id/btnFuncton01"
+        style="@style/WrapWrap"
+        android:text="调用方法1" />
+
+    <Button
+        android:id="@+id/btnFuncton02"
+        style="@style/WrapWrap"
+        android:text="调用方法2" />
+
+    <Button
+        android:id="@+id/btnFuncton03"
+        style="@style/WrapWrap"
+        android:text="调用方法3" />
+
+
+    <Button
+        android:id="@+id/btnFuncton04"
+        style="@style/WrapWrap"
+        android:text="调用方法4" />
+
+    <Button
+        android:id="@+id/btnCloseB"
+        style="@style/WrapWrap"
+        android:text="关闭B" />
+
+    <TextView
+        android:id="@+id/tvShow"
+        style="@style/WrapWrap" />
+
+</LinearLayout>
