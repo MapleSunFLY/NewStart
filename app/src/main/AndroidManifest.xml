@@ -72,7 +72,7 @@
 
         <activity android:name=".neinterface.text.AActivity" />
         <activity android:name=".neinterface.text.BActivity" />
-        <activity android:name=".ioc.IOCActivity"></activity>
+        <activity android:name=".ioc.text.IOCActivity"></activity>
     </application>
 
 </manifest>

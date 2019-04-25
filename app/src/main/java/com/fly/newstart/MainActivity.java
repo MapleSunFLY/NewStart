@@ -11,6 +11,7 @@ import com.fly.newstart.announcement.AnnouncementActivity;
 import com.fly.newstart.broadcast.BroadcastActivity;
 import com.fly.newstart.circlemenu.CircleMenuActivity;
 import com.fly.newstart.gettxt.GetTxtActivity;
+import com.fly.newstart.ioc.text.IOCActivity;
 import com.fly.newstart.myokhttp.HttpActivity;
 import com.fly.newstart.myview.ProgressActivity;
 import com.fly.newstart.neinterface.text.AActivity;
@@ -81,6 +82,9 @@ public class MainActivity extends BaseLiveDataActivity {
                 break;
             case R.id.btnNeinterface:
                 intent.setClass(MainActivity.this, AActivity.class);
+                break;
+            case R.id.btnIOC:
+                intent.setClass(MainActivity.this, IOCActivity.class);
                 break;
             default:
                 Log.d(TAG, "onClick: " + view.getId());

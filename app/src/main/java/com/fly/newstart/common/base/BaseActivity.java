@@ -3,29 +3,33 @@ package com.fly.newstart.common.base;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.fly.newstart.R;
+import com.fly.newstart.ioc.InjectManager;
 
 /**
- * .----.
- * _.'__    `.
- * .--(Q)(OK)---/$\
- * .' @          /$$$\
- * :         ,   $$$$$
- * `-..__.-' _.-\$$$/
- * `;_:    `"'
- * .'"""""`.
- * /,  FLY  ,\
- * //         \\
- * `-._______.-'
- * ___`. | .'___
- * (______|______)
+ *           .----.
+ *        _.'__    `.
+ *    .--(Q)(OK)---/$\
+ *  .' @          /$$$\
+ *  :         ,   $$$$$
+ *   `-..__.-' _.-\$/
+ *         `;_:    `"'
+ *       .'"""""`.
+ *      /,  FLY  ,\
+ *     //         \\
+ *     `-._______.-'
+ *     ___`. | .'___
+ *    (______|______)
  * </pre>
  * 包    名 : com.fly.newstart.common.base
  * 作    者 : FLY
@@ -47,6 +51,14 @@ public class BaseActivity extends AppCompatActivity {
     ViewGroup rootView;
     protected View mProgressView;
     private Dialog mDialogError;
+
+
+    @Override
+    protected  void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // 帮助所有子类完成注入工作
+        InjectManager.inject(this);
+    }
 
     @Override
     public void setContentView(View view) {
