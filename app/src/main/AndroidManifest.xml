@@ -72,7 +72,8 @@
 
         <activity android:name=".neinterface.text.AActivity" />
         <activity android:name=".neinterface.text.BActivity" />
-        <activity android:name=".ioc.text.IOCActivity"></activity>
+        <activity android:name=".ioc.text.IOCActivity" />
+        <activity android:name=".dynamicproxy.text.ProxyActivity"></activity>
     </application>
 
 </manifest>

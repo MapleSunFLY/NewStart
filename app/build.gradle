@@ -91,6 +91,6 @@ dependencies {
     compile 'android.arch.lifecycle:extensions:1.0.0'
     annotationProcessor "android.arch.lifecycle:compiler:1.0.0"
     // not needed if you are using the DefaultLifecycleObserver from common-java8 artifact.
-
+    compile 'com.android.volley:volley:1.1.0'
 
 }

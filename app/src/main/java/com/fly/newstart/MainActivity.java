@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.fly.newstart.announcement.AnnouncementActivity;
 import com.fly.newstart.broadcast.BroadcastActivity;
 import com.fly.newstart.circlemenu.CircleMenuActivity;
+import com.fly.newstart.dynamicproxy.text.ProxyActivity;
 import com.fly.newstart.gettxt.GetTxtActivity;
 import com.fly.newstart.ioc.text.IOCActivity;
 import com.fly.newstart.myokhttp.HttpActivity;
@@ -85,6 +86,9 @@ public class MainActivity extends BaseLiveDataActivity {
                 break;
             case R.id.btnIOC:
                 intent.setClass(MainActivity.this, IOCActivity.class);
+                break;
+            case R.id.btnProxy:
+                intent.setClass(MainActivity.this, ProxyActivity.class);
                 break;
             default:
                 Log.d(TAG, "onClick: " + view.getId());

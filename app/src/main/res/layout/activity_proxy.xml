@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchMatch"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.fly.newstart.dynamicproxy.text.ProxyActivity">
+
+    <Button
+        android:id="@+id/btnPull"
+       style="@style/WrapWrap"
+        android:onClick="onClick"
+        android:text="获取天气数据"/>
+
+    <Button
+        android:id="@+id/btnGet"
+        style="@style/WrapWrap"
+        android:onClick="onClick"
+        android:text="获取职位"/>
+</LinearLayout>
