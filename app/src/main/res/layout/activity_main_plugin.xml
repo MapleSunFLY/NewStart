@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchMatch"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.fly.newstart.plugin.MainPluginActivity">
+
+    <TextView style="@style/WrapWrap"
+        android:text="这里是主App"/>
+
+    <Button
+        android:id="@+id/btnLoad"
+        style="@style/WrapWrap"
+        android:text="加载插件app" />
+
+    <Button
+        android:id="@+id/btnSkip"
+        style="@style/WrapWrap"
+        android:text="跳转到插件app" />
+
+</LinearLayout>

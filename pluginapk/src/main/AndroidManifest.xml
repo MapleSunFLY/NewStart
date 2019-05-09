@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.shangyi.android.pluginapk">
+
+    <application>
+        <activity android:name=".PluginActivity" />
+        <activity android:name=".PluginInsideActivity"></activity>
+    </application>
+
+</manifest>

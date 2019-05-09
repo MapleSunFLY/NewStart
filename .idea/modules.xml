@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/NewStart.iml" filepath="$PROJECT_DIR$/NewStart.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/myview/myview.iml" filepath="$PROJECT_DIR$/myview/myview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pluginapk/pluginapk.iml" filepath="$PROJECT_DIR$/pluginapk/pluginapk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pluginlibrary/pluginlibrary.iml" filepath="$PROJECT_DIR$/pluginlibrary/pluginlibrary.iml" />
     </modules>
   </component>
 </project>

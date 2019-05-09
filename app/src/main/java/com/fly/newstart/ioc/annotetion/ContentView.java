@@ -28,7 +28,7 @@ import java.lang.annotation.Target;
  */
 
 
-@Target(ElementType.TYPE) //该注解作用于什么之上 ，对应枚举标识 METHOD-标识为类之上
+@Target(ElementType.TYPE) //该注解作用于什么之上 ，对应枚举标识 TYPE-标识为类之上
 @Retention(RetentionPolicy.RUNTIME)//jvm在运行时通过反射获取注解的值
 //SOURCE-源码级的，主要是做一些检查检测操作
 //CLASS-在编译时进行一些预操作，并且注解会在class存在，在源码和class文件都存在，运行时不存在，编译器注解方式  吗，

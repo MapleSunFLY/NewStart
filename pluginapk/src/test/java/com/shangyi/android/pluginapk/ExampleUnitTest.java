@@ -1,4 +1,4 @@
-package com.fly.myview;
+package com.shangyi.android.pluginapk;
 
 import org.junit.Test;
 

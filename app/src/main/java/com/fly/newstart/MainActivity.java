@@ -18,6 +18,7 @@ import com.fly.newstart.myview.ProgressActivity;
 import com.fly.newstart.neinterface.text.AActivity;
 import com.fly.newstart.pdf.PDFViewActivity;
 import com.fly.newstart.permission.PermissionsActivity;
+import com.fly.newstart.plugin.MainPluginActivity;
 import com.fly.newstart.rx.RxActivity;
 import com.fly.newstart.scancode.ScanActivity;
 import com.fly.newstart.signature.LinePathViewActivity;
@@ -89,6 +90,9 @@ public class MainActivity extends BaseLiveDataActivity {
                 break;
             case R.id.btnProxy:
                 intent.setClass(MainActivity.this, ProxyActivity.class);
+                break;
+            case R.id.btnPlugin:
+                intent.setClass(MainActivity.this, MainPluginActivity.class);
                 break;
             default:
                 Log.d(TAG, "onClick: " + view.getId());
