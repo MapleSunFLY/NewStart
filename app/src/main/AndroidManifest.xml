@@ -59,7 +59,14 @@
         <activity android:name=".recyclerview.RecyclerActivity" />
         <activity android:name=".broadcast.BroadcastActivity" />
         <activity android:name=".permission.PermissionsActivity" />
+        <activity android:name=".neinterface.text.AActivity" />
+        <activity android:name=".neinterface.text.BActivity" />
+        <activity android:name=".ioc.text.IOCActivity" />
+        <activity android:name=".dynamicproxy.text.ProxyActivity" />
+        <activity android:name=".plugin.MainPluginActivity" />
+        <activity android:name=".imgcompress.ImgCompressActivity" />
 
+        <!-- 四大组件之一 类容提供者 7.0要安装必须使用她，提供给其他应用、进程使用r -->
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.FileProvider"
@@ -70,11 +77,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".neinterface.text.AActivity" />
-        <activity android:name=".neinterface.text.BActivity" />
-        <activity android:name=".ioc.text.IOCActivity" />
-        <activity android:name=".dynamicproxy.text.ProxyActivity" />
-        <activity android:name=".plugin.MainPluginActivity"></activity>
+        <activity android:name=".ARouter.ARouterActivity"></activity>
     </application>
 
 </manifest>

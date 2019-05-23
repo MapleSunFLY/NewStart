@@ -1,4 +1,8 @@
 // Define versions in a single place
 ext {
 
+    dependencies = [
+            rxjavaVersion   : '1.2.9',
+            rxandroidVersion: '1.2.1',
+    ]
 }
