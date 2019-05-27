@@ -16,6 +16,10 @@ import com.fly.newstart.ioc.text.IOCActivity;
 import com.fly.newstart.myokhttp.HttpActivity;
 import com.fly.newstart.myview.ProgressActivity;
 import com.fly.newstart.neinterface.text.AActivity;
+import com.fly.newstart.network.NetworkManager;
+import com.fly.newstart.network.annotation.Network;
+import com.fly.newstart.network.test.NetworkActivity;
+import com.fly.newstart.network.type.NetType;
 import com.fly.newstart.pdf.PDFViewActivity;
 import com.fly.newstart.permission.PermissionsActivity;
 import com.fly.newstart.plugin.MainPluginActivity;
@@ -25,6 +29,7 @@ import com.fly.newstart.signature.LinePathViewActivity;
 import com.fly.newstart.utils.LocationUtils;
 import com.fly.newstart.webview.WebViewActivity;
 import com.shangyi.android.core.base.BaseLiveDataActivity;
+import com.shangyi.android.utils.LogUtils;
 
 public class MainActivity extends BaseLiveDataActivity {
 
@@ -41,6 +46,8 @@ public class MainActivity extends BaseLiveDataActivity {
         } else {
             textLocation.setText("未获取");
         }
+
+        NetworkManager.getDefault().registerObserver(this);
     }
 
     public void onClick(View view) {
@@ -94,10 +101,24 @@ public class MainActivity extends BaseLiveDataActivity {
             case R.id.btnPlugin:
                 intent.setClass(MainActivity.this, MainPluginActivity.class);
                 break;
+            case R.id.btnNetwork:
+                intent.setClass(MainActivity.this, NetworkActivity.class);
+                break;
             default:
                 Log.d(TAG, "onClick: " + view.getId());
-                break;
+                return;
         }
         startActivity(intent);
+    }
+
+    @Network(netType = NetType.WIFI)
+    public void network(NetType netType) {
+        LogUtils.d(TAG,"当前网络状况：" + netType.name());
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        NetworkManager.getDefault().removeObserver(this);
     }
 }

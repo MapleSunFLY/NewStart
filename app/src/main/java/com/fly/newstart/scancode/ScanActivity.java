@@ -29,7 +29,7 @@ public class ScanActivity extends BaseActivity implements QRCodeView.Delegate {
     private QRCodeView mQRCodeView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
         initView();

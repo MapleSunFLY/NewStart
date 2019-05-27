@@ -3,13 +3,13 @@ package com.fly.newstart.common.base;
 import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.multidex.BuildConfig;
 import android.util.Log;
 
+import com.fly.newstart.BuildConfig;
 import com.fly.newstart.greendao.db.utils.GreenDaoUtils;
 import com.fly.newstart.greendao.gen.DaoSession;
+import com.fly.newstart.network.NetworkManager;
 import com.fly.newstart.utils.HttpUtils;
-import com.shangyi.android.utils.LogUtils;
 import com.shangyi.android.utils.Utils;
 import com.tencent.smtt.sdk.QbSdk;
 
@@ -82,6 +82,9 @@ public class BaseApplication extends Application {
 
         //okgo 初始化
         HttpUtils.init(this);
+
+        //网络监听初始
+        NetworkManager.getDefault().init(this);
     }
 
 

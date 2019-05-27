@@ -13,7 +13,7 @@ import com.shangyi.android.pluginlibrary.ProxyActivity;
 public class MainPluginActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_plugin);
         PluginManager.getInstance().init(this);

@@ -29,7 +29,7 @@ public class GetTxtActivity extends BaseActivity {
     private TextView tvName;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_txt);
         initView();

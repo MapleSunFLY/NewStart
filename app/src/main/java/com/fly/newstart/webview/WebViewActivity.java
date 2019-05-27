@@ -26,7 +26,7 @@ public class WebViewActivity extends BaseActivity {
     private String url = " http://39.107.113.91:8888/hero-wx/questionnaire/getQuestionByInteractionId?token=b45ca46d4c4240e08857a083b5063836&interactionId=3&pictureNum=5";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
         initWeb();

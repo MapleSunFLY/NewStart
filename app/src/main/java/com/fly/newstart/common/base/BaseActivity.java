@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.fly.newstart.R;
 import com.fly.newstart.ioc.InjectManager;
+import com.fly.newstart.network.NetworkManager;
 
 /**
  *           .----.
@@ -54,10 +55,11 @@ public class BaseActivity extends AppCompatActivity {
 
 
     @Override
-    protected  void onCreate(@Nullable Bundle savedInstanceState) {
+    public  void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 帮助所有子类完成注入工作
         InjectManager.inject(this);
+        NetworkManager.getDefault().registerObserver(this);
     }
 
     @Override
@@ -113,5 +115,11 @@ public class BaseActivity extends AppCompatActivity {
 
     public Activity getActivity() {
         return this;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        NetworkManager.getDefault().removeObserver(this);
     }
 }

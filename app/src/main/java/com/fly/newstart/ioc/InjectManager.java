@@ -139,6 +139,7 @@ public class InjectManager {
                 if (annotationType != null) {
                     //通过EventBase注解，获取3个重要的规律
                     EventBase eventBase = annotationType.getAnnotation(EventBase.class);
+                    if (eventBase == null) return;
                     //事件的3个规律
                     String listenerSetter = eventBase.listenerSetter();
                     Class<?> listenerType = eventBase.listenerType();

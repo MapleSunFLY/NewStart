@@ -49,7 +49,7 @@ public class ProgressActivity extends BaseActivity {
     private StatisticsLineChartView statisticsLineChartView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
         saleProgressView = (SaleProgressView) findViewById(R.id.spv);
