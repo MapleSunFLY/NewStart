@@ -39,8 +39,9 @@ public class CompressImage implements Handler.Callback {
     private static final int MSG_COMPRESS_ERROR = 2;
 
     private String mTargetDir;
-    private boolean focusAlpha;
     private int maxSize;
+    private int reqWidth;
+    private int reqHeight;
     private int mLeastCompressSize;
     private OnRenameListener mRenameListener;
     private OnCompressListener mCompressListener;
@@ -53,6 +54,8 @@ public class CompressImage implements Handler.Callback {
         this.mTargetDir = builder.mTargetDir;
         this.mRenameListener = builder.mRenameListener;
         this.maxSize = builder.maxSize;
+        this.reqWidth = builder.reqWidth;
+        this.reqHeight = builder.reqHeight;
         this.mStreamProviders = builder.mStreamProviders;
         this.mCompressListener = builder.mCompressListener;
         this.mLeastCompressSize = builder.mLeastCompressSize;
@@ -75,12 +78,14 @@ public class CompressImage implements Handler.Callback {
             mTargetDir = getImageCacheDir(context).getAbsolutePath();
         }
 
-        String cacheBuilder = mTargetDir + "/" +
-                System.currentTimeMillis() +
-                (int) (Math.random() * 1000) +
-                (TextUtils.isEmpty(suffix) ? ".jpg" : suffix);
-
-        return new File(cacheBuilder);
+        File file = new File(mTargetDir);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        StringBuffer fileName = new StringBuffer(String.valueOf(System.currentTimeMillis()));
+        fileName.append((int) (Math.random() * 1000))
+                .append((TextUtils.isEmpty(suffix) ? ".jpg" : suffix));
+        return new File(mTargetDir, fileName.toString());
     }
 
     private File getImageCustomFile(Context context, String filename) {
@@ -165,7 +170,7 @@ public class CompressImage implements Handler.Callback {
      */
     private File get(InputStreamProvider input, Context context) throws IOException {
         try {
-            return new Engine(input, getImageCacheFile(context, Checker.SINGLE.extSuffix(input)), maxSize, focusAlpha).compress();
+            return new Engine(input, getImageCacheFile(context, Checker.SINGLE.extSuffix(input)), maxSize, reqWidth, reqHeight).compress();
         } finally {
             input.close();
         }
@@ -204,13 +209,13 @@ public class CompressImage implements Handler.Callback {
         if (mCompressionPredicate != null) {
             if (mCompressionPredicate.apply(path.getPath())
                     && Checker.SINGLE.needCompress(mLeastCompressSize, path.getPath())) {
-                result = new Engine(path, outFile, maxSize, focusAlpha).compress();
+                result = new Engine(path, outFile, maxSize, reqWidth, reqHeight).compress();
             } else {
                 result = new File(path.getPath());
             }
         } else {
             result = Checker.SINGLE.needCompress(mLeastCompressSize, path.getPath()) ?
-                    new Engine(path, outFile, maxSize, focusAlpha).compress() :
+                    new Engine(path, outFile, maxSize, reqWidth, reqHeight).compress() :
                     new File(path.getPath());
         }
 
@@ -243,10 +248,6 @@ public class CompressImage implements Handler.Callback {
          */
         private String mTargetDir;
 
-        /**
-         * 开启质量压缩条件
-         */
-        private boolean focusAlpha;
 
         /**
          * 不压缩的阈值
@@ -256,12 +257,23 @@ public class CompressImage implements Handler.Callback {
         /**
          * 压缩到的最大大小
          */
-        private int maxSize = 200;
+        private int maxSize = 300;
 
         /**
          * 压缩前重命名接口
          */
         private OnRenameListener mRenameListener;
+
+        /**
+         * 像素 宽点数
+         */
+        private int reqWidth;
+
+        /**
+         * 像素 高点数
+         */
+        private int reqHeight;
+
 
         /**
          * 压缩回调接口
@@ -364,13 +376,15 @@ public class CompressImage implements Handler.Callback {
         }
 
         /**
-         * Do I need to keep the image's alpha channel
+         * 设置 压缩像素 reqWidth * reqHeight 越高图片越清晰 默认不压缩
          *
-         * @param focusAlpha <p> true - to keep alpha channel, the compress speed will be slow. </p>
-         *                   <p> false - don't keep alpha channel, it might have a black background.</p>
+         * @param reqWidth
+         * @param reqHeight
+         * @return
          */
-        public Builder setFocusAlpha(boolean focusAlpha) {
-            this.focusAlpha = focusAlpha;
+        public Builder setCompressPixel(int reqWidth, int reqHeight) {
+            this.reqWidth = reqWidth;
+            this.reqHeight = reqHeight;
             return this;
         }
 
@@ -396,8 +410,8 @@ public class CompressImage implements Handler.Callback {
         }
 
         /**
-         * 当返回值为真时，不要压缩图像，否则不要压缩图像文件
-         * do compress image when return value was true, otherwise, do not compress the image file
+         * 当返回值为真时压缩图像，否则不要压缩图像文件
+         * do compress image when return value was true ,otherwise do not compress the image file
          *
          * @param compressionPredicate A predicate callback that returns true or false for the given input path should be compressed.
          */

@@ -1,4 +1,4 @@
-package com.fly.newstart.imgcompress.interf;
+package com.fly.newstart.imgcompress.compress;
 
 import com.fly.newstart.imgcompress.compress.PhotoEntity;
 

@@ -9,9 +9,9 @@ import java.io.InputStream;
  */
 public interface InputStreamProvider {
 
-  InputStream open() throws IOException;
+    InputStream open() throws IOException;
 
-  void close();
+    void close();
 
-  String getPath();
+    String getPath();
 }
