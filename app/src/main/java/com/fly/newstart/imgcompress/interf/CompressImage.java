@@ -1,6 +1,6 @@
 package com.fly.newstart.imgcompress.interf;
 
-import com.fly.newstart.imgcompress.entity.PhotoEntity;
+import com.fly.newstart.imgcompress.compress.PhotoEntity;
 
 import java.util.ArrayList;
 

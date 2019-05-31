@@ -1,4 +1,4 @@
-package com.fly.newstart.imgcompress.entity;
+package com.fly.newstart.imgcompress.compress;
 
 import java.io.Serializable;
 

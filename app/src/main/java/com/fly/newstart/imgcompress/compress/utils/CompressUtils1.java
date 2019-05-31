@@ -1,4 +1,4 @@
-package com.fly.newstart.imgcompress.utils;
+package com.fly.newstart.imgcompress.compress.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,7 +10,6 @@ import android.util.Log;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -30,7 +29,7 @@ import java.io.IOException;
  *     ___`. | .'___
  *    (______|______)
  * </pre>
- * 包    名 : com.fly.newstart.imgcompress.utils
+ * 包    名 : com.fly.newstart.imgcompress.compress.utils
  * 作    者 : FLY
  * 创建时间 : 2019/5/13
  * 描述: 图片压缩工具

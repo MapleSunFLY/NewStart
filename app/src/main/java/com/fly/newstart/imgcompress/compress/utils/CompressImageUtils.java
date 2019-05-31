@@ -1,14 +1,12 @@
-package com.fly.newstart.imgcompress.utils;
+package com.fly.newstart.imgcompress.compress.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
 
-import com.fly.newstart.imgcompress.config.CompressConfig;
-import com.fly.newstart.imgcompress.interf.CompressResultListener;
-
-import java.io.FileNotFoundException;
+import com.fly.newstart.imgcompress.compress.CompressConfig;
+import com.fly.newstart.imgcompress.compress.CompressResultListener;
 
 
 /**
@@ -27,7 +25,7 @@ import java.io.FileNotFoundException;
  *     ___`. | .'___
  *    (______|______)
  * </pre>
- * 包    名 : com.fly.newstart.imgcompress.utils
+ * 包    名 : com.fly.newstart.imgcompress.compress.utils
  * 作    者 : FLY
  * 创建时间 : 2019/5/14
  * 描述: 文件压缩的工具类

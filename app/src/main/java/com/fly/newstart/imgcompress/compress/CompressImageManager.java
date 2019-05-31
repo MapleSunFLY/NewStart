@@ -1,15 +1,10 @@
 package com.fly.newstart.imgcompress.compress;
 
-import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.fly.newstart.imgcompress.ImgCompressActivity;
-import com.fly.newstart.imgcompress.config.CompressConfig;
-import com.fly.newstart.imgcompress.entity.PhotoEntity;
 import com.fly.newstart.imgcompress.interf.CompressImage;
-import com.fly.newstart.imgcompress.interf.CompressResultListener;
-import com.fly.newstart.imgcompress.utils.CompressImageUtils;
+import com.fly.newstart.imgcompress.compress.utils.CompressImageUtils;
 import com.shangyi.android.utils.ListUtils;
 
 import java.io.File;

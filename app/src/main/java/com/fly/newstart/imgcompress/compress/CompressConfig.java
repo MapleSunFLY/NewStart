@@ -1,4 +1,4 @@
-package com.fly.newstart.imgcompress.config;
+package com.fly.newstart.imgcompress.compress;
 
 import java.io.Serializable;
 
