@@ -7,24 +7,29 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.fly.newstart.R;
+import com.fly.newstart.common.base.BaseActivity;
 import com.fly.newstart.permission.request.IRequestPermissions;
 import com.fly.newstart.permission.request.RequestPermissions;
 import com.fly.newstart.permission.requestresult.IRequestPermissionsResult;
 import com.fly.newstart.permission.requestresult.OnPermissionClickListener;
 import com.fly.newstart.permission.requestresult.RequestPermissionsResultSetApp;
+import com.fly.newstart.permission.rxpermissions.Permission;
+import com.fly.newstart.permission.rxpermissions.RxPermissions;
 import com.fly.newstart.permission.utils.FileProviderUtils;
 import com.fly.newstart.permission.utils.SystemProgramUtils;
+import com.shangyi.android.utils.LogUtils;
 
 import java.io.File;
 
-public class PermissionsActivity extends AppCompatActivity {
+import io.reactivex.functions.Consumer;
+
+public class PermissionsActivity extends BaseActivity {
 
     Button btnPaizhao;
     Button btnXiangce;
@@ -33,8 +38,12 @@ public class PermissionsActivity extends AppCompatActivity {
     IRequestPermissions requestPermissions = RequestPermissions.getInstance();//动态权限请求
     IRequestPermissionsResult requestPermissionsResult = RequestPermissionsResultSetApp.getInstance();//动态权限请求结果处理
 
+    //需要请求的权限
+    String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_permissions);
 
@@ -66,12 +75,31 @@ public class PermissionsActivity extends AppCompatActivity {
         btnXiangce.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!requestPermissions()) {
-                    return;
-                }
-                SystemProgramUtils.zhaopian(PermissionsActivity.this);
+                new RxPermissions(PermissionsActivity.this).requestEach(permissions)
+                        .subscribe(new Consumer<Permission>() {
+
+                    @Override
+                    public void accept(Permission permission) throws Exception {
+                        if (permission.granted) {
+                            // 用户已经同意该权限
+                            LogUtils.d(TAG, permission.name + " is granted.");
+                        } else if (permission.shouldShowRequestPermissionRationale) {
+                            // 用户拒绝了该权限，没有选中『不再询问』（Never ask again）,那么下次再次启动时，还会提示请求权限的对话框
+                            LogUtils.d(TAG, permission.name + " is denied. More info should be provided.");
+                        } else {
+                            // 用户拒绝了该权限，并且选中『不再询问』
+                            LogUtils.d(TAG, permission.name + " is denied.");
+                        }
+                    }
+                });
+//                if (!requestPermissions()) {
+//                    return;
+//                }
+//                SystemProgramUtils.zhaopian(PermissionsActivity.this);
             }
         });
+
+
     }
 
     //请求权限
