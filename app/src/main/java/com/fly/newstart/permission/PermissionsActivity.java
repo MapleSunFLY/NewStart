@@ -6,24 +6,22 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.fly.newstart.R;
 import com.fly.newstart.common.base.BaseActivity;
 import com.fly.newstart.permission.request.IRequestPermissions;
 import com.fly.newstart.permission.request.RequestPermissions;
 import com.fly.newstart.permission.requestresult.IRequestPermissionsResult;
-import com.fly.newstart.permission.requestresult.OnPermissionClickListener;
 import com.fly.newstart.permission.requestresult.RequestPermissionsResultSetApp;
-import com.fly.newstart.permission.rxpermissions.Permission;
-import com.fly.newstart.permission.rxpermissions.RxPermissions;
+import com.fly.newstart.permission.rx.RxDisposableManage;
+import com.fly.newstart.permission.rx.RxView;
+import com.fly.newstart.permission.rxpermissions.PermissionCallback;
+import com.fly.newstart.permission.rxpermissions.PermissionHelper;
 import com.fly.newstart.permission.utils.FileProviderUtils;
 import com.fly.newstart.permission.utils.SystemProgramUtils;
-import com.shangyi.android.utils.LogUtils;
 
 import java.io.File;
 
@@ -64,42 +62,33 @@ public class PermissionsActivity extends BaseActivity {
         btnPaizhao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!requestPermissions()) {
-                    return;
-                }
-                SystemProgramUtils.paizhao(PermissionsActivity.this, new File("/mnt/sdcard/tupian.jpg"));
+//               1ystemProgramUtils.paizhao(PermissionsActivity.this, new File("/mnt/sdcard/tupian.jpg"));
             }
         });
 
-        //相册
-        btnXiangce.setOnClickListener(new View.OnClickListener() {
+        RxView.click(btnXiangce, new Consumer<View>() {
             @Override
-            public void onClick(View view) {
-                new RxPermissions(PermissionsActivity.this).requestEach(permissions)
-                        .subscribe(new Consumer<Permission>() {
+            public void accept(View view) throws Exception {
+                PermissionHelper.getInstance().requestEach(PermissionsActivity.this, new PermissionCallback() {
 
                     @Override
-                    public void accept(Permission permission) throws Exception {
-                        if (permission.granted) {
-                            // 用户已经同意该权限
-                            LogUtils.d(TAG, permission.name + " is granted.");
-                        } else if (permission.shouldShowRequestPermissionRationale) {
-                            // 用户拒绝了该权限，没有选中『不再询问』（Never ask again）,那么下次再次启动时，还会提示请求权限的对话框
-                            LogUtils.d(TAG, permission.name + " is denied. More info should be provided.");
-                        } else {
-                            // 用户拒绝了该权限，并且选中『不再询问』
-                            LogUtils.d(TAG, permission.name + " is denied.");
-                        }
+                    public void onGranted(String permissionName) {
+
                     }
-                });
-//                if (!requestPermissions()) {
-//                    return;
-//                }
-//                SystemProgramUtils.zhaopian(PermissionsActivity.this);
+
+                    @Override
+                    public void onRefuse(String permissionName) {
+
+                    }
+
+                    @Override
+                    public void onNoMoreReminder(String permissionName) {
+
+                    }
+                }, permissions);
             }
         });
-
-
+        //相册
     }
 
     //请求权限
@@ -118,30 +107,30 @@ public class PermissionsActivity extends BaseActivity {
         super.onResume();
     }
 
-    //用户授权操作结果（可能授权了，也可能未授权）
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        //用户给APP授权的结果
-        //判断grantResults是否已全部授权，如果是，执行相应操作，如果否，提醒开启权限
-        if (requestPermissionsResult.doRequestPermissionsResult(this, permissions, grantResults, new OnPermissionClickListener() {
-            @Override
-            public void onClick(boolean isPositive) {
-                if (isPositive) {
-                    Toast.makeText(PermissionsActivity.this, "前往权限管理", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(PermissionsActivity.this, "取消了，打开权限", Toast.LENGTH_LONG).show();
-                }
-            }
-        })) {
-            //请求的权限全部授权成功，此处可以做自己想做的事了
-            //输出授权结果
-            Toast.makeText(PermissionsActivity.this, "授权成功，请重新点击刚才的操作！", Toast.LENGTH_LONG).show();
-        } else {
-            //输出授权结果
-            Toast.makeText(PermissionsActivity.this, "请给APP授权，否则功能无法正常使用！", Toast.LENGTH_LONG).show();
-        }
-    }
+//    //用户授权操作结果（可能授权了，也可能未授权）
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        //用户给APP授权的结果
+//        //判断grantResults是否已全部授权，如果是，执行相应操作，如果否，提醒开启权限
+//        if (requestPermissionsResult.doRequestPermissionsResult(this, permissions, grantResults, new OnPermissionClickListener() {
+//            @Override
+//            public void onClick(boolean isPositive) {
+//                if (isPositive) {
+//                    Toast.makeText(PermissionsActivity.this, "前往权限管理", Toast.LENGTH_LONG).show();
+//                } else {
+//                    Toast.makeText(PermissionsActivity.this, "取消了，打开权限", Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        })) {
+//            //请求的权限全部授权成功，此处可以做自己想做的事了
+//            //输出授权结果
+//            Toast.makeText(PermissionsActivity.this, "授权成功，请重新点击刚才的操作！", Toast.LENGTH_LONG).show();
+//        } else {
+//            //输出授权结果
+//            Toast.makeText(PermissionsActivity.this, "请给APP授权，否则功能无法正常使用！", Toast.LENGTH_LONG).show();
+//        }
+//    }
 
     //拍照、相册、图片裁切结果回调
     @Override
@@ -178,5 +167,12 @@ public class PermissionsActivity extends BaseActivity {
                 }
                 break;
         }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        RxDisposableManage.getInstance().cancel(this);
     }
 }
