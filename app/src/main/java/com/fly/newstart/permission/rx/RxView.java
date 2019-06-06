@@ -5,12 +5,17 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.TextView;
 
-import com.shangyi.android.http.interceptor.Transformer;
-
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableSource;
+import io.reactivex.ObservableTransformer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * 包    名 : com.fly.newstart.permission.rx
@@ -40,9 +45,9 @@ public class RxView {
                 };
 
                 view.addTextChangedListener(watcher);
-                emitter.onNext(view.getText().toString());
+                //  emitter.onNext(view.getText().toString());
             }
-        }).compose(Transformer.<String>switchSchedulers()).subscribe(onNext));
+        }).compose(RxView.<String>switchSchedulers()).subscribe(onNext));
     }
 
     public static void click(final View view, Consumer<View> onNext) {
@@ -59,10 +64,24 @@ public class RxView {
                                 v.setEnabled(true);
                             }
                         }, 350);
+                        emitter.onNext(view);
                     }
                 });
-                emitter.onNext(view);
             }
-        }).compose(Transformer.<View>switchSchedulers()).subscribe(onNext));
+        }).compose(RxView.<View>switchSchedulers()).subscribe(onNext));
+    }
+
+    private static <T> ObservableTransformer<T, T> switchSchedulers() {
+        return new ObservableTransformer<T, T>() {
+            public ObservableSource<T> apply(@NonNull Observable<T> upstream) {
+                return upstream.subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).doOnSubscribe(new Consumer<Disposable>() {
+                    public void accept(@NonNull Disposable disposable) throws Exception {
+                    }
+                }).subscribeOn(AndroidSchedulers.mainThread()).observeOn(AndroidSchedulers.mainThread()).doFinally(new Action() {
+                    public void run() throws Exception {
+                    }
+                });
+            }
+        };
     }
 }

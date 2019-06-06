@@ -18,12 +18,16 @@ import com.fly.newstart.permission.requestresult.IRequestPermissionsResult;
 import com.fly.newstart.permission.requestresult.RequestPermissionsResultSetApp;
 import com.fly.newstart.permission.rx.RxDisposableManage;
 import com.fly.newstart.permission.rx.RxView;
-import com.fly.newstart.permission.rxpermissions.PermissionCallback;
+import com.fly.newstart.permission.rxpermissions.interf.PermissionCallback;
 import com.fly.newstart.permission.rxpermissions.PermissionHelper;
+import com.fly.newstart.permission.rxpermissions.interf.PermissionClickListener;
 import com.fly.newstart.permission.utils.FileProviderUtils;
 import com.fly.newstart.permission.utils.SystemProgramUtils;
+import com.shangyi.android.utils.ListUtils;
+import com.shangyi.android.utils.LogUtils;
 
 import java.io.File;
+import java.util.List;
 
 import io.reactivex.functions.Consumer;
 
@@ -72,18 +76,25 @@ public class PermissionsActivity extends BaseActivity {
                 PermissionHelper.getInstance().requestEach(PermissionsActivity.this, new PermissionCallback() {
 
                     @Override
-                    public void onGranted(String permissionName) {
-
+                    public void onComplete(List<String> granteds, List<String> refuses, List<String> noMoreReminders) {
+                        if (ListUtils.isNotEmpty(granteds)) {
+                            LogUtils.d(TAG, "同意：" + granteds.size());
+                        }
+                        if (ListUtils.isNotEmpty(refuses)) {
+                            LogUtils.d(TAG, "拒绝：" + refuses.size());
+                        }
+                        if (ListUtils.isNotEmpty(noMoreReminders)) {
+                            LogUtils.d(TAG, "不在提醒：" + noMoreReminders.size());
+                        }
                     }
-
+                }, new PermissionClickListener() {
                     @Override
-                    public void onRefuse(String permissionName) {
-
-                    }
-
-                    @Override
-                    public void onNoMoreReminder(String permissionName) {
-
+                    public void onClick(boolean isPositive) {
+                        if (isPositive){
+                            LogUtils.d(TAG, "去申请" );
+                        }else {
+                            LogUtils.d(TAG, "取消申请" );
+                        }
                     }
                 }, permissions);
             }
