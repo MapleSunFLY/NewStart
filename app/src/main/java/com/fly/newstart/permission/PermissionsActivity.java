@@ -40,8 +40,7 @@ public class PermissionsActivity extends BaseActivity {
     IRequestPermissions requestPermissions = RequestPermissions.getInstance();//动态权限请求
     IRequestPermissionsResult requestPermissionsResult = RequestPermissionsResultSetApp.getInstance();//动态权限请求结果处理
 
-    //需要请求的权限
-    String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
+
 
 
     @Override
@@ -70,9 +69,12 @@ public class PermissionsActivity extends BaseActivity {
             }
         });
 
+
         RxView.click(btnXiangce, new Consumer<View>() {
             @Override
             public void accept(View view) throws Exception {
+                //需要请求的权限
+                String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
                 PermissionHelper.getInstance().requestEach(PermissionsActivity.this, new PermissionCallback() {
 
                     @Override
