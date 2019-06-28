@@ -6,7 +6,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -14,7 +13,12 @@ import android.view.WindowManager;
 
 import com.fly.myview.R;
 
-
+/**
+ * 包    名 : com.fly.myview.dialog
+ * 作    者 : FLY
+ * 创建时间 : 2019/6/28
+ * 描述: 常用对话
+ */
 public class CommonDialog extends Dialog {
 
     private OnCancelListener cancelListener;
