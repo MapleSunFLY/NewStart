@@ -15,9 +15,6 @@ import android.view.animation.ScaleAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 
-import com.shangyi.android.msgpromptlibrary.R;
-import com.shangyi.android.msgpromptlibrary.interf.OnActionClickListener;
-
 /**
  * 包    名 : com.shangyi.android.msgpromptlibrary.prompt
  * 作    者 : FLY
@@ -416,7 +413,7 @@ public class PromptDialog {
         /**
          * 广告关闭图标
          */
-        int closeIcon = R.drawable.prompt_ad_close_ic;
+        int closeIcon ;
 
         /**
          * 广告圆角

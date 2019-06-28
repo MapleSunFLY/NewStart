@@ -1,6 +1,7 @@
 package com.fly.newstart.ioc;
 
 import android.app.Activity;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 
@@ -52,6 +53,21 @@ public class InjectManager {
 
         //事件的注入
         injectEvents(activity);
+
+    }
+
+    /**
+     * 注解的初始注入 Fragment
+     *
+     * @param fragment
+     */
+    public static void inject(Fragment fragment) {
+
+        //控件的注入
+        injectView(fragment);
+
+        //事件的注入
+        injectEvents(fragment);
 
     }
 
@@ -164,6 +180,78 @@ public class InjectManager {
                             //获取set方法
                             Method setter = view.getClass().getMethod(listenerSetter, listenerType);
                             //执行方法，传入代理
+                            setter.invoke(view, listene);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * 控件的注入
+     *
+     * @param fragment
+     */
+    private static void injectView(Fragment fragment) {
+        Class<? extends Fragment> cla = fragment.getClass();
+        Field[] fields = cla.getDeclaredFields();
+        if (fields == null || fields.length < 1) return;
+        for (Field field : fields) {
+            InjectView injectView = field.getAnnotation(InjectView.class);
+            if (injectView != null) {
+                int viewId = injectView.value();
+                try {
+                    Method methodView = cla.getMethod("getView");
+                    View viewBase = (View) methodView.invoke(fragment);
+                    if (viewBase != null) {
+                        Class<? extends View> claView = viewBase.getClass();
+                        Method method = claView.getMethod("findViewById", int.class);
+                        Object view = method.invoke(viewBase, viewId);
+                        field.setAccessible(true);
+                        field.set(fragment, view);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }
+    }
+
+    /**
+     * 事件的注入
+     *
+     * @param fragment
+     */
+    private static void injectEvents(Fragment fragment) {
+        Class<? extends Fragment> cla = fragment.getClass();
+        Method[] methods = cla.getDeclaredMethods();
+        if (methods == null || methods.length < 1) return;
+        for (Method method : methods) {
+            Annotation[] annotations = method.getAnnotations();
+            if (annotations == null || annotations.length < 1) continue;
+            for (Annotation annotation : annotations) {
+                Class<? extends Annotation> annotationType = annotation.annotationType();
+                if (annotationType != null) {
+                    EventBase eventBase = annotationType.getAnnotation(EventBase.class);
+                    if (eventBase == null) return;
+                    String listenerSetter = eventBase.listenerSetter();
+                    Class<?> listenerType = eventBase.listenerType();
+                    String listenerCallBack = eventBase.listenerCallBack();
+                    try {
+                        Method valueMethod = annotationType.getDeclaredMethod("value");
+                        int[] viewIds = (int[]) valueMethod.invoke(annotation);
+                        ListenerInvocationHandler handler = new ListenerInvocationHandler(fragment);
+                        handler.addMethod(listenerCallBack, method);
+                        Object listene = Proxy.newProxyInstance(listenerType.getClassLoader(), new Class[]{listenerType}, handler);
+                        if (viewIds == null || viewIds.length < 1) continue;
+                        for (int viewId : viewIds) {
+                            View view = fragment.getView().findViewById(viewId);
+                            Method setter = view.getClass().getMethod(listenerSetter, listenerType);
                             setter.invoke(view, listene);
                         }
                     } catch (Exception e) {
