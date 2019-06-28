@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.fly.newstart.announcement.AnnouncementActivity;
 import com.fly.newstart.broadcast.BroadcastActivity;
 import com.fly.newstart.circlemenu.CircleMenuActivity;
+import com.fly.newstart.dialog.DialogActivity;
 import com.fly.newstart.dynamicproxy.text.ProxyActivity;
 import com.fly.newstart.gettxt.GetTxtActivity;
 import com.fly.newstart.imgcompress.ImgCompressActivity;
@@ -107,6 +108,9 @@ public class MainActivity extends BaseLiveDataActivity {
                 break;
             case R.id.btnCompress:
                 intent.setClass(MainActivity.this, ImgCompressActivity.class);
+                break;
+            case R.id.btnDialog:
+                intent.setClass(MainActivity.this, DialogActivity.class);
                 break;
             default:
                 Log.d(TAG, "onClick: " + view.getId());
