@@ -90,7 +90,12 @@
         <!-- </intent-filter> -->
         <!-- </receiver> -->
         <activity android:name=".network.test.NetworkActivity" />
-        <activity android:name=".dialog.DialogActivity"></activity>
+        <activity android:name=".dialog.DialogActivity" />
+        <activity android:name=".load.LoadingMainActivity" />
+        <activity android:name=".load.LoadingNormalActivity" />
+        <activity android:name=".load.LoadingPlaceholderActivity" />
+        <activity android:name=".load.LoadingDefaultPageActivity" />
+        <activity android:name=".load.LoadingConvertorActivity"></activity>
     </application>
 
 </manifest>

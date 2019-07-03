@@ -15,6 +15,7 @@ import com.fly.newstart.dynamicproxy.text.ProxyActivity;
 import com.fly.newstart.gettxt.GetTxtActivity;
 import com.fly.newstart.imgcompress.ImgCompressActivity;
 import com.fly.newstart.ioc.text.IOCActivity;
+import com.fly.newstart.load.LoadingMainActivity;
 import com.fly.newstart.myokhttp.HttpActivity;
 import com.fly.newstart.myview.ProgressActivity;
 import com.fly.newstart.neinterface.text.AActivity;
@@ -112,6 +113,9 @@ public class MainActivity extends BaseLiveDataActivity {
             case R.id.btnDialog:
                 intent.setClass(MainActivity.this, DialogActivity.class);
                 break;
+            case R.id.btnLading:
+                intent.setClass(MainActivity.this, LoadingMainActivity.class);
+                break;
             default:
                 Log.d(TAG, "onClick: " + view.getId());
                 return;
@@ -121,7 +125,7 @@ public class MainActivity extends BaseLiveDataActivity {
 
     @Network(netType = NetType.WIFI)
     public void network(NetType netType) {
-        LogUtils.d(TAG,"当前网络状况：" + netType.name());
+        LogUtils.d(TAG, "当前网络状况：" + netType.name());
     }
 
     @Override
