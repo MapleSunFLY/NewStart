@@ -150,6 +150,27 @@
             android:onClick="onClick"
             android:text="加载封装" />
 
+        <Button
+            android:id="@+id/btnSVG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/common_svg_selector"
+            android:drawableTop="@drawable/common_svg_selector"
+            android:drawableTint="@color/common_svg_selector"
+            android:onClick="onClick"
+            android:text="SVG" />
+
+
+        <Button
+            android:id="@+id/btnMyEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/common_svg_selector"
+            android:drawableTop="@drawable/common_svg_selector"
+            android:drawableTint="@color/common_svg_selector"
+            android:onClick="onClick"
+            android:text="My Event" />
+
         <TextView
             android:id="@+id/tv_location"
             android:layout_width="wrap_content"

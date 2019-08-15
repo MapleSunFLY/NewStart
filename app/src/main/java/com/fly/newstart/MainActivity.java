@@ -12,6 +12,7 @@ import com.fly.newstart.broadcast.BroadcastActivity;
 import com.fly.newstart.circlemenu.CircleMenuActivity;
 import com.fly.newstart.dialog.DialogActivity;
 import com.fly.newstart.dynamicproxy.text.ProxyActivity;
+import com.fly.newstart.eventbus.Bus1Activity;
 import com.fly.newstart.gettxt.GetTxtActivity;
 import com.fly.newstart.imgcompress.ImgCompressActivity;
 import com.fly.newstart.ioc.text.IOCActivity;
@@ -115,6 +116,9 @@ public class MainActivity extends BaseLiveDataActivity {
                 break;
             case R.id.btnLading:
                 intent.setClass(MainActivity.this, LoadingMainActivity.class);
+                break;
+            case R.id.btnMyEvent:
+                intent.setClass(MainActivity.this, Bus1Activity.class);
                 break;
             default:
                 Log.d(TAG, "onClick: " + view.getId());

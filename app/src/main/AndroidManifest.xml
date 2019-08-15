@@ -10,12 +10,12 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <!-- 拍照权限 -->
-    <uses-permission android:name="android.permission.ACTIVITY_RESUMED" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <!-- 往sdcard中写入数据的权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 在sdcard中创建/删除文件的权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
     <!-- 网络权限 -->
@@ -95,7 +95,9 @@
         <activity android:name=".load.LoadingNormalActivity" />
         <activity android:name=".load.LoadingPlaceholderActivity" />
         <activity android:name=".load.LoadingDefaultPageActivity" />
-        <activity android:name=".load.LoadingConvertorActivity"></activity>
+        <activity android:name=".load.LoadingConvertorActivity" />
+        <activity android:name=".eventbus.Bus1Activity" />
+        <activity android:name=".eventbus.Bus2Activity"></activity>
     </application>
 
 </manifest>

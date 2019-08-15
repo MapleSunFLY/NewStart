@@ -23,3 +23,7 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+#代码混淆配置的地方
+-dontwarn #忽略打包警告
+#-keep Class com.xxx.* #  保持指定的包名下所有的类或者指定类，不混淆代码 有部分三方库不支持混淆 部分类如R等文件不能混淆 不能混淆源代码

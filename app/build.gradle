@@ -18,21 +18,71 @@ android {
         resValue("integer", "time_read_out", "60000")
         resValue("string", "defualt_http_url", "")
 
+        //APK 极致优化
+        // 1、SVG图片显示兼容
+        // 2、着色器 Tint 使用 同一张图片动态颜色设置
+        vectorDrawables.useSupportLibrary = true
+
+        // 3、只保留默认的资源和指定的资源
+        //resConfigs('zh-rCN','zh-rHK','en-rUS')
+
+        //4、动态库的打包配置（去掉大头的过程，除定制化设备）
+        //配置SO库架构（cpu架构）还可以添加  'armeabi-v7a', 'arm64-v8a'， 'x86', 'x86_64', 'mips', 'mips64'
+        // armeabi 第5代 ARM armeabi（都兼容，但性能有所损耗，如微信和qq）
+        // armeabi-v7a 第7代 游戏或者一些对手机性能有要求的app 目前大部分手机都支持这种cpu架构（王者荣耀）
+        // arm64-v8a 第8代
+        // x86 intel 32位，一般用于平板
+        // x86_64 intel 64位，一般用于平板
+        // mips 与 mips64  基本没见过
+        ndk {
+            //选择要添加的对应 cpu 类型的 .so 库。 可以极大的减小apk 大小
+            //如果是定制化项目尽可能兼容，如果是公众化项目并且对手机要求不高这样即可
+            abiFilters('armeabi')
+        }
+
+        //5、移除无用资源 物理删除 提前备份 谨慎使用
+        //A、Refactor->Remove Unused Resour.... 发射或动态调用的资源会被删除，如注入布局 不建议使用
+        //B、Lint检查：Ctrl+N 搜索 Unused resources
+
+        //6.启用代码的混淆  minifyEnabled true 在proguard-rules配置不混淆类容
+        //7.启用资源压缩 shrinkResources true  在res/raw/keep.xml 中对不需要打包压缩的资源
+        //8.启动webp转换插件，压缩图片 1.3mb的png-》100kb webp 效果几乎无损，操作：对应png或jpg图片右键最下面点击即可，直面效果
+
+        //9、资源src的混淆、7Z压缩、对齐、签名工作
+        /**
+         * 资源混淆：微信方案
+         * 资源目录目录为：apk中resourcer.arsc记录，资源混淆针对于这个文件操作
+         * apk资源ID 0x7f0b0002  0x7f是一种标准 0b代表类型比如：layout 0002表示序列特指某一个layout：如main_activity.xml
+         * */
+
+
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [moduleName: project.getName()]
             }
         }
     }
+
     buildTypes {
         debug {
-
+            //是否开启代码混淆 默认不开起
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
-            minifyEnabled false
+            //是否开启代码混淆
+            minifyEnabled true
+
+            //启用资源压缩 没有用到的资源打包时进行压缩 只用一个占位符进行处理 在res/raw/keep.xml 中对不需要打包压缩的资源，进行配置 tools:keep="xxx"
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //将libs里面的SO库打包到apk内
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
         }
     }
 }
