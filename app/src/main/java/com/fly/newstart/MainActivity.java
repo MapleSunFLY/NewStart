@@ -16,6 +16,7 @@ import com.fly.newstart.eventbus.Bus1Activity;
 import com.fly.newstart.gettxt.GetTxtActivity;
 import com.fly.newstart.imgcompress.ImgCompressActivity;
 import com.fly.newstart.ioc.text.IOCActivity;
+import com.fly.newstart.javaimplementjs.JavaImplementJsActivity;
 import com.fly.newstart.load.LoadingMainActivity;
 import com.fly.newstart.myokhttp.HttpActivity;
 import com.fly.newstart.myview.ProgressActivity;
@@ -119,6 +120,9 @@ public class MainActivity extends BaseLiveDataActivity {
                 break;
             case R.id.btnMyEvent:
                 intent.setClass(MainActivity.this, Bus1Activity.class);
+                break;
+            case R.id.btnJs:
+                intent.setClass(MainActivity.this, JavaImplementJsActivity.class);
                 break;
             default:
                 Log.d(TAG, "onClick: " + view.getId());

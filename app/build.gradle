@@ -17,7 +17,7 @@ android {
         resValue("integer", "time_connect_out", "60000")
         resValue("integer", "time_read_out", "60000")
         resValue("string", "defualt_http_url", "")
-
+        multiDexEnabled true
         //APK 极致优化
         // 1、SVG图片显示兼容
         // 2、着色器 Tint 使用 同一张图片动态颜色设置
@@ -111,6 +111,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile files('libs/txk5.jar')
+    compile files('libs/js.jar')
     //控件大全
     compile "com.android.support:design:${SUPPORT_VERSION}"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'

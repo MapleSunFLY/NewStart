@@ -97,7 +97,8 @@
         <activity android:name=".load.LoadingDefaultPageActivity" />
         <activity android:name=".load.LoadingConvertorActivity" />
         <activity android:name=".eventbus.Bus1Activity" />
-        <activity android:name=".eventbus.Bus2Activity"></activity>
+        <activity android:name=".eventbus.Bus2Activity" />
+        <activity android:name=".javaimplementjs.JavaImplementJsActivity"></activity>
     </application>
 
 </manifest>

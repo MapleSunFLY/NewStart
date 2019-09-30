@@ -151,6 +151,13 @@
             android:text="加载封装" />
 
         <Button
+            android:id="@+id/btnJs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClick"
+            android:text="js" />
+
+        <Button
             android:id="@+id/btnSVG"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
