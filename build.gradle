@@ -23,7 +23,11 @@ allprojects {
         jcenter()
 
         maven {
-            url  "http://maven.suifangyun.com/repository/maven-public"
+            credentials {
+                username 'mavenuploader'
+                password 'postOp@2014'
+            }
+            url "http://maven.suifangyun.com/repository/maven-public"
         }
     }
 }
